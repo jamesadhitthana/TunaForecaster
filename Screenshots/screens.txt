@@ -1,0 +1,2 @@
+These screenshots are taken when the application is being developed.
+The final product might not look like the screenshots in the folder.
