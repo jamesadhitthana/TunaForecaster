@@ -32,7 +32,7 @@ If all works well this is the console should show the IP address of where the da
 Then copy and paste the IP address to your browser in order to access the application's user interface. 
 
 
-![tutorial2](#)
+![tutorial2](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/home-cleaned-data-11km.PNG)
 
 This is the view of the ...
 
