@@ -1,5 +1,15 @@
-# TunaForecaster
-Forecasting the location of Tuna using SVM (Support Vector Machine) through Python and Dash.
+<h1 align="center">
+    Tuna Forecaster
+</h1>
+<p align="center">
+<sup>
+<b>Forecasting the location of Tuna using SVM (Support Vector Machine) through Python and Dash.</b>
+</sup>
+</p>
+
+
+## Introduction
+
 The initial goal of our program is to.....#TODO
 
 ## Getting Started
@@ -56,7 +66,7 @@ Last but not least, you can scroll down and view the individual coordinates of e
 
 ## Explanation
 
-On this section, we will explain the techniques that we have used to achieve our results.
+On the following sections, we will explain the techniques that we have used to achieve our results.
 
 ## Data Cleansing
 
