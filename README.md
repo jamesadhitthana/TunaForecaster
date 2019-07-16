@@ -209,7 +209,7 @@ Now that the layout and view is all set up, we must create the callbacks which b
 
 After every "@app.callback()" function, it must then be directly followed underneath by a function that recieves the parameters of the inputs that we have set up in the dash.dependencies.Input values. Then this function can be filled with the intended functionalities. By the end of this function, it must return the variables according to the dash.dependencies.Output we hav previously set up according to the order given.
 
-```
+```python
 #---Callback Slider to Data Table---#
 @app.callback(
     # set the output as the checkbox's options
