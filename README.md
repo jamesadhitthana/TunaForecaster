@@ -31,7 +31,7 @@ Python 3 with the following additional libraries:
 Make sure you have all the prerequisites installed and you are connected to the internet.
 Then clone/download the folder, open terminal/cmd and navigate to the folder and run app.py:
 
-```
+```bash
 python app.py
 ```
 
@@ -95,24 +95,20 @@ Therefore for every coordinate of the source data that we have, if it is ±0.1 d
 
 #### Functionalities
 
-```
- cleanFile(defaultFolderDirectory+folderOfDataToClean +
-              listOfFiles[i], cleanedFolderPath, "seaPorts.csv")
+```python
+ cleanFile(defaultFolderDirectory+folderOfDataToClean + listOfFiles[i], cleanedFolderPath, "seaPorts.csv")
 ```
 
 The function above takes the original folder that contains the files to clean and then a list of files that are in the folder and the output folder directory along with the seaPorts.csv files that contains all the coordinates for the seaports to clean from. This is the main function that we created in order to clean a single file and save it in the target file. Therefore to clean all the files in the folder, in the script we created a for loop to call this function according to all of the files that exists in our folder.
 
-```
+```python
         listOfLat, listOfLng, listOfSST, listOfChlorophyll = checkPort(dataFrameIndoSeaPorts["Latitude"][i], dataFrameIndoSeaPorts["Longitude"][i], listOfLat, listOfLng, listOfSST, listOfChlorophyll, 0.1)
-
 ```
 
 This function above returns four lists that contains the latitude, longitude, SST, and chlorophyll of the current coordinate input. The function takes a single point's latiitude and longitude and takes the current list of latitude, longitude, sst, and chlorophyll along with the decimal degree (in the example above it is 0.1 which results to 11.132km).
 
-```
-latChecked, lngChecked, sstChecked, chlorophyllChecked = checkLatLng(
-        portLat, portLong, listOfLat, listOfLng, listOfSST, listOfChlorophyll, decimalToCheck)
-
+```python
+latChecked, lngChecked, sstChecked, chlorophyllChecked = checkLatLng(portLat, portLong, listOfLat, listOfLng, listOfSST, listOfChlorophyll, decimalToCheck)
 ```
 This function checkLatLng(...) returns the result of the checked latitude, longitude, SST, and chlorophyll if it is not in the 11.132km radius of any port in the seaPort.csv file. This function needs the current port's lat and long along with the list of latitude, longitude, sst, list of chlorophyll and the decimal degree to check.
 
@@ -127,13 +123,13 @@ Dash is a framework that allows us to build beautiful, web-based analytics appli
 
 In order to show the data that we have produced into a map, we used MapBox's map API which needs an access token that can be requested on [this link](https://docs.mapbox.com/api/). Then with the API token, replace the variable below to your API token.
 
-```
+```python
 mapbox_access_token = "INSERT ACCESS TOKEN HERE"
 ```
 
 The first part of the dash app consists of scanning the chosen folder that contains all of the coordinate information and then placing it into a list "listOfFiles[]. By default the folder loaded is the actual data (not trained) because that is the default first data that is shown on the dashboard.
 
-```
+```python
 listOfFiles = []
 # by default the "." value will make it the current working directory of the py file
 defaultFolderDirectory = "."
@@ -150,7 +146,7 @@ try:
 
 Next is the essential part where we create the variables that contains the components that will be placed into the dashboard. These components are made of the dash-core-components and dash-bootstrap-components that are provided in the modules we imported previously. In the snippet below the dash-core-components can be seen by the prefix "dcc." and the dash-bootstrap-components can be seen with the prefix "dbc.". Dash also supports html elements such as html.P, html.H1, html.Div,html.Hr, and more and so certain HTML elements are used to create the overall layout of the dashboard.
 
-```
+```python
 logoTuna = dbc.Navbar(
     dbc.Container(
         [html.A(
@@ -182,14 +178,14 @@ tableBottom = dbc.Container(
 
 After creating the variables that will house the components for the dashboard, we need to setup dash to recognize the python script as a dash app. Since Dash supports the use of CSS, and since we are also using the bootstrap framework, we used an external CSS file in order to help make the application more user friendly. Also we can change the title that appears on the browser to a custom title which we changed accordingly.
 
-```
+```python
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.COSMO])
 app.title = "Tuna Fish Forecaster"
 ```
 
 Now that dash recognizes that the python script is a dash app, we can then input all of the variables that contained the components created previously into the dash app's layout. At the end, we also added an additional html.Div with extra information to demonstrate that it is also possible to add components wihtout creating a variable.
 
-```
+```python
 app.layout = html.Div([  # TODO: EDIT ME!
     logoTuna,
     topCards,
@@ -268,7 +264,7 @@ def changeLabelChosenPredictionModel(selector):  # , datePickerDate):
 
 Now that all of the essential functionality of the app is created, this snippet essentially runs the dash app when the python script is executed.
 
-```
+```python
 if __name__ == "__main__":
     app.run_server(debug=True)
 ```
@@ -278,11 +274,11 @@ if __name__ == "__main__":
 ### function1blablablablalaba
 
 blablablalbalbalblalaba 
-```
+```python
 sblablablalbalbalblalaba
 ```
 blablablalbalbalblalaba
-```
+```python
 blablablalbalbalblalaba
 ```
 
