@@ -32,10 +32,18 @@ If all works well this is the console should show the IP address of where the da
 Then copy and paste the IP address to your browser in order to access the application's user interface and it should show similar to the image below. 
 
 
-![tutorial2](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/home-cleaned-data-11km-table.PNG)
+![tutorial2](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/home-cleaned-data-11km.PNG)
 
 
-This is the view of the ...
+You can play around with the dashboard by directly manipulating the slider to pick the date.
+
+By default, the dashboard shows the "actual" data which consists of the real raw data that we have not manipulated in any way. This data is what we used to train our model on.
+
+
+First picking the prediction model on the dropdown list and then picking the year. Then
+
+You could also specify the sliders to only go through a specific year by picking the year you want on the dropdown list.
+
 
 ![tutorial3](#)
 
