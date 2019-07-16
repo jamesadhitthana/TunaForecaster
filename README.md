@@ -69,6 +69,28 @@ blablablalbalbalblalaba
 blablablalbalbalblalaba
 ```
 
+## Data Cleansing
+
+Before the data is trained, we had to clean the data first in order for our model to not be distorted. 
+
+### tunaDataCleanerSSTChlorophyll.py
+
+This python script is responsible for automatically iterating through the original data source folder, cleaning the data, and then saving the new cleaned data files in a new folder. 
+
+Since our data is a collection of coordinates, to clean the data, we had to search for the coordinates of sea ports that surround Southeast Asia and also sea ports along the northern coast of Australia and then compile these coordinates into a .CSV file. 
+
+With this sea port CSV file we can then compare if each of the data in the original source is between 11.132KM from the sea ports or not. If a point in our data source is less than 11.132KM from any port in the list, then the data is deleted. If a coordinate point is more than 11.133KM, then the data is saved.
+
+# 0.1 = 11.132 km
+#TODO: Jelasin decimal
+```
+sblablablalbalbalblalaba
+```
+blablablalbalbalblalaba
+```
+blablablalbalbalblalaba
+```
+
 ## Forecasting and SVM
 
 blalalalblalabala....
@@ -91,4 +113,4 @@ blalalalblalabala....
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
-* Fish data by [-](#)
+* Fish data by [Global Fishing Watch](https://globalfishingwatch.org/)
