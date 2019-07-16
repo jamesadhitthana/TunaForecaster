@@ -85,33 +85,39 @@ The distance of 11.132KM is chosen because according to our research, tuna fish 
 
 Since our data source uses the decimal degree geographic information system that looks like this (-6.228427, 106.609744) instead of looking like this (6°13'42.3"S 106°36'35.1"E) , we can then consult a [table](https://en.wikipedia.org/wiki/Decimal_degrees) that has a list of decimal degree precision versus length. According to the table, since the data source we are using is located at the equator, the length for every 0.1 decimal degree is 11.132km. 
 
-Therefore for every coordinate of the source data that we have, if it is ±0.1 decimal degrees from any seaport that is in the seaport.csv file (this means that it is between 11.132km from any seaport), the coordinate point is deleted from the data source.
+Therefore for every coordinate of the source data that we have, if it is ±0.1 decimal degrees from any seaport that is in the seaPort.csv file (this means that it is between 11.132km from any seaport), the coordinate point is deleted from the data source.
 
 #### #--How to use--#
 1. Place this python file in the same folder that contains the seaPort.csv file.
 2. Place the folder that contains the data to clean into a new folder inside the folder and change the "folderOfDataToClean" variable to the name of your chosen folder you placed previously to clean
 3. Change the "cleanedFolderPath" variable to a new folder name you want to have the cleaned files to be put in
 4. Modify the checkPort(... 0.2) function and change the number to the desired decimal degree
+5. Run the script. The results should appear in the folder you have configured in the "cleanedFolderPath" variable.
 
-
+#### Functionalities
 
 ```
  cleanFile(defaultFolderDirectory+folderOfDataToClean +
               listOfFiles[i], cleanedFolderPath, "seaPorts.csv")
 ```
-blablablalbalbalblalaba
-```
-        listOfLat, listOfLng, listOfSST, listOfChlorophyll = checkPort(dataFrameIndoSeaPorts["Latitude"][i], dataFrameIndoSeaPorts["Longitude"][i],
-                                                                       listOfLat, listOfLng, listOfSST, listOfChlorophyll, 0.1)
+
+The method above takes the original folder that contains the files to clean and then a list of files that are in the folder and the output folder directory along with the seaPorts.csv files that contains all the coordinates for the seaports to clean from. This is the main method that we created in order to clean a single file and save it in the target file. Therefore to clean all the files in the folder, in the script we created a for loop to call this function according to all of the files that exists in our folder.
 
 ```
-blabla
+        listOfLat, listOfLng, listOfSST, listOfChlorophyll = checkPort(dataFrameIndoSeaPorts["Latitude"][i], dataFrameIndoSeaPorts["Longitude"][i], listOfLat, listOfLng, listOfSST, listOfChlorophyll, 0.1)
+
+```
+
+This method above returns four lists that contains the latitude, longitude, SST, and chlorophyll of the current coordinate input. The method takes a single point's latiitude and longitude and takes the current list of latitude, longitude, sst, and chlorophyll along with the decimal degree (in the example above it is 0.1 which results to 11.132km).
+
 ```
 latChecked, lngChecked, sstChecked, chlorophyllChecked = checkLatLng(
         portLat, portLong, listOfLat, listOfLng, listOfSST, listOfChlorophyll, decimalToCheck)
 
 ```
-blabla
+This method checkLatLng(...) returns the result of the checked latitude, longitude, SST, and chlorophyll if it is not in the 11.132km radius of any port in the seaPort.csv file. This method needs the current port's lat and long along with the list of latitude, longitude, sst, list of chlorophyll and the decimal degree to check.
+
+This method contains the main calculation that it needs to check whether it is ±0.1 decimal degrees from the port. It works by checking the latitude and longitude of a coordinate point with the latitude of the port's latitude longitude. If the current coordinate it is less than -0.1 of the any port or more than +0.1 of any port it will add the coordinate to the final file. This is because it means that it is at least 1.132km further north, east, south, and west than any seaport in the seaPort.csv file.
 
 
 ## Forecasting and SVM
