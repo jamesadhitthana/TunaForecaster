@@ -100,23 +100,23 @@ Therefore for every coordinate of the source data that we have, if it is ±0.1 d
               listOfFiles[i], cleanedFolderPath, "seaPorts.csv")
 ```
 
-The method above takes the original folder that contains the files to clean and then a list of files that are in the folder and the output folder directory along with the seaPorts.csv files that contains all the coordinates for the seaports to clean from. This is the main method that we created in order to clean a single file and save it in the target file. Therefore to clean all the files in the folder, in the script we created a for loop to call this function according to all of the files that exists in our folder.
+The function above takes the original folder that contains the files to clean and then a list of files that are in the folder and the output folder directory along with the seaPorts.csv files that contains all the coordinates for the seaports to clean from. This is the main function that we created in order to clean a single file and save it in the target file. Therefore to clean all the files in the folder, in the script we created a for loop to call this function according to all of the files that exists in our folder.
 
 ```
         listOfLat, listOfLng, listOfSST, listOfChlorophyll = checkPort(dataFrameIndoSeaPorts["Latitude"][i], dataFrameIndoSeaPorts["Longitude"][i], listOfLat, listOfLng, listOfSST, listOfChlorophyll, 0.1)
 
 ```
 
-This method above returns four lists that contains the latitude, longitude, SST, and chlorophyll of the current coordinate input. The method takes a single point's latiitude and longitude and takes the current list of latitude, longitude, sst, and chlorophyll along with the decimal degree (in the example above it is 0.1 which results to 11.132km).
+This function above returns four lists that contains the latitude, longitude, SST, and chlorophyll of the current coordinate input. The function takes a single point's latiitude and longitude and takes the current list of latitude, longitude, sst, and chlorophyll along with the decimal degree (in the example above it is 0.1 which results to 11.132km).
 
 ```
 latChecked, lngChecked, sstChecked, chlorophyllChecked = checkLatLng(
         portLat, portLong, listOfLat, listOfLng, listOfSST, listOfChlorophyll, decimalToCheck)
 
 ```
-This method checkLatLng(...) returns the result of the checked latitude, longitude, SST, and chlorophyll if it is not in the 11.132km radius of any port in the seaPort.csv file. This method needs the current port's lat and long along with the list of latitude, longitude, sst, list of chlorophyll and the decimal degree to check.
+This function checkLatLng(...) returns the result of the checked latitude, longitude, SST, and chlorophyll if it is not in the 11.132km radius of any port in the seaPort.csv file. This function needs the current port's lat and long along with the list of latitude, longitude, sst, list of chlorophyll and the decimal degree to check.
 
-This method contains the main calculation that it needs to check whether it is ±0.1 decimal degrees from the port. It works by checking the latitude and longitude of a coordinate point with the latitude of the port's latitude longitude. If the current coordinate it is less than -0.1 of the any port or more than +0.1 of any port it will add the coordinate to the final file. This is because it means that it is at least 1.132km further north, east, south, and west than any seaport in the seaPort.csv file.
+This function contains the main calculation that it needs to check whether it is ±0.1 decimal degrees from the port. It works by checking the latitude and longitude of a coordinate point with the latitude of the port's latitude longitude. If the current coordinate it is less than -0.1 of the any port or more than +0.1 of any port it will add the coordinate to the final file. This is because it means that it is at least 1.132km further north, east, south, and west than any seaport in the seaPort.csv file.
 
 
 ## Dash Dashboard with Bootstrap
@@ -204,9 +204,13 @@ app.layout = html.Div([  # TODO: EDIT ME!
     ),
 ])
 ```
-#TODO CALLBACKS
+
+Now that the layout and view is all set up, we must create the callbacks which basically handles all of the main functionality of each of the interactable components in the app and sets where the output is for each callback. For every callback, it must first start with an "@app.callback"() function that contains the parameters for at least one dash.dependencies.Output component which are components such as labels/tables/maps/graphs/any other component that needs to receive input data. The function also must recieve at least one dash.dependencies.Input component such as a slider/dropdown/any other component that can be manipulated by the user.
+
+After every "@app.callback()" function, it must then be directly followed underneath by a function that recieves the parameters of the inputs that we have set up in the dash.dependencies.Input values. Then this function can be filled with the intended functionalities. By the end of this function, it must return the variables according to the dash.dependencies.Output we hav previously set up according to the order given.
 
 ```
+#---Callback Slider to Data Table---#
 @app.callback(
     # set the output as the checkbox's options
     [dash.dependencies.Output("tableFish", "data"),
@@ -221,6 +225,45 @@ app.layout = html.Div([  # TODO: EDIT ME!
     #  dash.dependencies.Input("labelChosenDate", "children"), ])
 )
 def changeDate(selector, valueDropdown):
+    ...
+    return data, labelBaru, labelNumberOfTunaLocationsInSelection  # ,dateBaru
+
+
+#---------Callback Dropdown to Slider---------#
+@app.callback(
+    # set the output as the checkbox's options
+    [  # dash.dependencies.Output("dateSlider", "marks"),
+        dash.dependencies.Output("dateSlider", "max"),
+        dash.dependencies.Output("dateSlider", "min")],
+    # set the iniput as the radiobutton's values
+    [dash.dependencies.Input("dropdownYear", "value"),
+     # dash.dependencies.Input("datePicker", "date")
+     ]
+)
+def changeYear(selector):  # , datePickerDate):
+    ...
+      return maxDate, minDate
+      
+#---------Callback Mapbox---------#      
+@app.callback(
+    dash.dependencies.Output("map-graph", "figure"),  # output to map graph
+    [dash.dependencies.Input("tableFish", "data"),
+     dash.dependencies.Input("labelChosenDate", "children"), ])  # input from dropdown list
+def update_graph(data, labelChosenDate):      
+      ...
+      return {"data": trace1, "layout": layout1}
+      
+      
+#---Callback dropdown prediction model---#
+@app.callback(
+    # set the output as the checkbox's options
+    dash.dependencies.Output("labelChosenPredictionModel", "children"),
+    # set the iniput as the radiobutton's values
+    [dash.dependencies.Input("dropdownPredictionModel", "value"), ]
+)
+def changeLabelChosenPredictionModel(selector):  # , datePickerDate):
+    labelBaru = selector  # change label
+    return labelBaru
 ```
 
 Now that all of the essential functionality of the app is created, this snippet essentially runs the dash app when the python script is executed.
