@@ -58,17 +58,6 @@ Last but not least, you can scroll down and view the individual coordinates of e
 
 On this section, we will explain the techniques that we have used to achieve our results.
 
-### function1blablablablalaba
-
-blablablalbalbalblalaba 
-```
-sblablablalbalbalblalaba
-```
-blablablalbalbalblalaba
-```
-blablablalbalbalblalaba
-```
-
 ## Data Cleansing
 
 Before the data is trained, we had to clean the data first in order for our model to not be distorted. 
@@ -120,9 +109,21 @@ This method checkLatLng(...) returns the result of the checked latitude, longitu
 This method contains the main calculation that it needs to check whether it is ±0.1 decimal degrees from the port. It works by checking the latitude and longitude of a coordinate point with the latitude of the port's latitude longitude. If the current coordinate it is less than -0.1 of the any port or more than +0.1 of any port it will add the coordinate to the final file. This is because it means that it is at least 1.132km further north, east, south, and west than any seaport in the seaPort.csv file.
 
 
+## Dash Dashboard with Bootstrap
+
+
 ## Forecasting and SVM
 
-blalalalblalabala....
+### function1blablablablalaba
+
+blablablalbalbalblalaba 
+```
+sblablablalbalbalblalaba
+```
+blablablalbalbalblalaba
+```
+blablablalbalbalblalaba
+```
 
 ## Built With
 * [Python](https://www.python.org/) - Python Programming Language
