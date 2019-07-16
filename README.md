@@ -121,7 +121,60 @@ This method contains the main calculation that it needs to check whether it is Â
 
 ## Dash Dashboard with Bootstrap
 
+Dash is a framework that allows us to build beautiful, web-based analytics applications. Through dash and its dash-core-components, we are able to create interactive elements that build up our interactive dashboard. In addition to that, this project also implements the bootstrap framework through the dash-bootstrap-components additional module in order to assist with the front-end development of the layout and design of the dashboard.
 
+### Setting up the Dash app
+
+In order to show the data that we have produced into a map, we used MapBox's map API which needs an access token that can be requested on [!this link](https://docs.mapbox.com/api/). Then with the API token, replace the variable below to your API token.
+```
+mapbox_access_token = "INSERT ACCESS TOKEN HERE"
+```
+
+
+```
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.COSMO])
+app.title = "Tuna Fish Forecaster"
+```
+
+```
+app.layout = html.Div([  # TODO: EDIT ME!
+    logoTuna,
+    topCards,
+    body,
+    tableBottom,
+
+    # -----
+    html.Div([
+        html.P('Developed by Deananda Irwansyah, Christopher Yefta, & James Adhitthana',
+               style={'display': 'inline'})
+    ], className="twelve columns", style={'fontSize': 18, 'padding-top': 20, 'textAlign': 'center'}
+    ),
+])
+```
+
+```
+@app.callback(
+    # set the output as the checkbox's options
+    [dash.dependencies.Output("tableFish", "data"),
+     dash.dependencies.Output("labelChosenDate", "children"),
+     dash.dependencies.Output("numberOfTunaLocationsInSelection", "children"),
+     # dash.dependencies.Output("datePicker", "date"),
+     ],
+    # set the iniput as the radiobutton's values
+    [dash.dependencies.Input("dateSlider", "value"),
+     dash.dependencies.Input("dropdownPredictionModel", "value"), ]
+    #     [dash.dependencies.Input("tableFish", "data"),
+    #  dash.dependencies.Input("labelChosenDate", "children"), ])
+)
+def changeDate(selector, valueDropdown):
+```
+
+```
+
+if __name__ == "__main__":
+    app.run_server(debug=True)
+
+```
 ## Forecasting and SVM
 
 ### function1blablablablalaba
