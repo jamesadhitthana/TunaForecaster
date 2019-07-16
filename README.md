@@ -42,20 +42,15 @@ You can change this by picking the prediction model from the dropdown menu.
 
 You can play around with the dashboard by directly manipulating the slider to pick the date and the map and UI will change accordingly.
 
-
-
-
+![tutorial3](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tut-slider.gif)
 
 You could also specify the sliders to only go through a specific year by picking the year you want on the dropdown list.
 
+![tutorial4](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tut-pick-year.gif)
 
 
-![tutorial3](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/home-cleaned-data-11km.PNG)
 
 User can also ...
-
-![tutorial4](#)
-
 Then, user can see the ...
 
 ![tutorial5](#)
