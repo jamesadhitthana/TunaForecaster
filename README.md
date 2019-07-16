@@ -125,16 +125,69 @@ Dash is a framework that allows us to build beautiful, web-based analytics appli
 
 ### Setting up the Dash app
 
-In order to show the data that we have produced into a map, we used MapBox's map API which needs an access token that can be requested on [!this link](https://docs.mapbox.com/api/). Then with the API token, replace the variable below to your API token.
+In order to show the data that we have produced into a map, we used MapBox's map API which needs an access token that can be requested on [this link](https://docs.mapbox.com/api/). Then with the API token, replace the variable below to your API token.
+
 ```
 mapbox_access_token = "INSERT ACCESS TOKEN HERE"
 ```
 
+The first part of the dash app consists of scanning the chosen folder that contains all of the coordinate information and then placing it into a list "listOfFiles[]. By default the folder loaded is the actual data (not trained) because that is the default first data that is shown on the dashboard.
+
+```
+listOfFiles = []
+# by default the "." value will make it the current working directory of the py file
+defaultFolderDirectory = "."
+currentChosenPredictionModel = "\\actual\\"
+try:
+    # change me
+    for folderName, subFolders, fileNames in os.walk(defaultFolderDirectory+currentChosenPredictionModel):
+        # print("The filenames in "+folderName+" are: "+str(fileNames))
+        for files in fileNames:
+            listOfFiles.append(files)
+    print("\nSuccessfuly loaded List of Files:",
+          len(listOfFiles), "files total")
+```
+
+Next is the essential part where we create the variables that contains the components that will be placed into the dashboard. These components are made of the dash-core-components and dash-bootstrap-components that are provided in the modules we imported previously. In the snippet below the dash-core-components can be seen by the prefix "dcc." and the dash-bootstrap-components can be seen with the prefix "dbc.". Dash also supports html elements such as html.P, html.H1, html.Div,html.Hr, and more and so certain HTML elements are used to create the overall layout of the dashboard.
+
+```
+logoTuna = dbc.Navbar(
+    dbc.Container(
+        [html.A(
+            ...
+            dbc.NavbarToggler(id="navbar-toggler2"),
+            dbc.Collapse(
+                dbc.Nav(
+                    ...
+                        ...
+                    ], c...
+                ),
+topCards = dbc.Container(
+    [dbc.Row(
+            [..    dbc.Col(dbc.Card(...
+                    dbc.CardBody(...
+body = dbc.Container(
+    [dbc.Row(
+            [...
+                dbc.Col(...
+                    [       ..[               
+tableBottom = dbc.Container(
+    [dbc.Row(
+            [dbc.Col([
+                    html.Div([
+                        html.Hr(),
+                        html.H3("Coordinates Table"),
+                        ....
+```
+
+After creating the variables that will house the components for the dashboard, we need to setup dash to recognize the python script as a dash app. Since Dash supports the use of CSS, and since we are also using the bootstrap framework, we used an external CSS file in order to help make the application more user friendly. Also we can change the title that appears on the browser to a custom title which we changed accordingly.
 
 ```
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.COSMO])
 app.title = "Tuna Fish Forecaster"
 ```
+
+Now that dash recognizes that the python script is a dash app, we can then input all of the variables that contained the components created previously into the dash app's layout. At the end, we also added an additional html.Div with extra information to demonstrate that it is also possible to add components wihtout creating a variable.
 
 ```
 app.layout = html.Div([  # TODO: EDIT ME!
@@ -151,6 +204,7 @@ app.layout = html.Div([  # TODO: EDIT ME!
     ),
 ])
 ```
+#TODO CALLBACKS
 
 ```
 @app.callback(
@@ -169,12 +223,13 @@ app.layout = html.Div([  # TODO: EDIT ME!
 def changeDate(selector, valueDropdown):
 ```
 
-```
+Now that all of the essential functionality of the app is created, this snippet essentially runs the dash app when the python script is executed.
 
+```
 if __name__ == "__main__":
     app.run_server(debug=True)
-
 ```
+
 ## Forecasting and SVM
 
 ### function1blablablablalaba
