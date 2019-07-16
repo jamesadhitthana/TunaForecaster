@@ -52,7 +52,7 @@ You can also play around with the interactive map by zooming in, picking the poi
 
 Last but not least, you can scroll down and view the individual coordinates of each point from the table on the bottom of the page.
 
-![tutorial5](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tut-table-coordinates.png)
+![tutorial5](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tut-table-coordinates.PNG)
 
 ## Explanation
 
