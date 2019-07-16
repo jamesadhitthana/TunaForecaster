@@ -8,7 +8,7 @@ To be able to run this app, you will need to have the following prerequesites an
 
 ### Prerequisites
 
-Additional libraries needed on Python:
+Python 3 with the following additional libraries:
 - pandas
 - dash
 - dash-table
@@ -19,17 +19,17 @@ Additional libraries needed on Python:
 ### Running the application
 
 Make sure you have all the prerequisites installed and you are connected to the internet.
-Then clone/download the folder and run app.py:
+Then clone/download the folder, open terminal/cmd and navigate to the folder and run app.py:
 
 ```
-shiny::runGitHub("jamesadhitthana/UPH_SentimentForecast")
+python app.py
 ```
 
 If all works well this is the console should show the IP address of where the dashboard is hosted. 
 
-![tutorial1](#)
+![tutorial1](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/running-tut-1.PNG)
 
-Then copy and paste the IP address to your browser in order to access the application's user interface. 
+Then copy and paste the IP address to your browser in order to access the application's user interface and it should show similar to the image below. 
 
 
 ![tutorial2](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/home-cleaned-data-11km.PNG)
