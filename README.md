@@ -35,14 +35,19 @@ Then copy and paste the IP address to your browser in order to access the applic
 ![tutorial2](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/home-cleaned-data-11km-table.PNG)
 
 
-You can play around with the dashboard by directly manipulating the slider to pick the date.
+By default, the dashboard shows the "actual" data which consists of the real raw data that we have not manipulated in any way. This data is what we used to train our model on. 
+You can change this by picking the prediction model from the dropdown menu.
 
-By default, the dashboard shows the "actual" data which consists of the real raw data that we have not manipulated in any way. This data is what we used to train our model on.
 
 
-First picking the prediction model on the dropdown list and then picking the year. Then
+You can play around with the dashboard by directly manipulating the slider to pick the date and the map and UI will change accordingly.
+
+
+
+
 
 You could also specify the sliders to only go through a specific year by picking the year you want on the dropdown list.
+
 
 
 ![tutorial3](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/home-cleaned-data-11km.PNG)
