@@ -87,14 +87,32 @@ Since our data source uses the decimal degree geographic information system that
 
 Therefore for every coordinate of the source data that we have, if it is ±0.1 decimal degrees from any seaport that is in the seaport.csv file (this means that it is between 11.132km from any seaport), the coordinate point is deleted from the data source.
 
+#### #--How to use--#
+- 1. Place this python file in the same folder that contains the seaPort.csv file.
+- 2. Place the folder that contains the data to clean into a new folder inside the folder and change the "folderOfDataToClean" variable to the name of your chosen folder you placed previously to clean
+- 3. Change the "cleanedFolderPath" variable to a new folder name you want to have the cleaned files to be put in
+- 4. Modify the checkPort(... 0.2) function and change the number to the desired decimal degree
+
+
 
 ```
-sblablablalbalbalblalaba
+ cleanFile(defaultFolderDirectory+folderOfDataToClean +
+              listOfFiles[i], cleanedFolderPath, "seaPorts.csv")
 ```
 blablablalbalbalblalaba
 ```
-blablablalbalbalblalaba
+        listOfLat, listOfLng, listOfSST, listOfChlorophyll = checkPort(dataFrameIndoSeaPorts["Latitude"][i], dataFrameIndoSeaPorts["Longitude"][i],
+                                                                       listOfLat, listOfLng, listOfSST, listOfChlorophyll, 0.1)
+
 ```
+blabla
+```
+latChecked, lngChecked, sstChecked, chlorophyllChecked = checkLatLng(
+        portLat, portLong, listOfLat, listOfLng, listOfSST, listOfChlorophyll, decimalToCheck)
+
+```
+blabla
+
 
 ## Forecasting and SVM
 
