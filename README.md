@@ -10,7 +10,7 @@
 
 ## Introduction
 
-The initial goal of our program is to.....#TODO
+The initial goal of our program is to..... **TODO DEAN KERJAIN INI**
 
 ## Getting Started
 
@@ -186,7 +186,7 @@ app.title = "Tuna Fish Forecaster"
 Now that dash recognizes that the python script is a dash app, we can then input all of the variables that contained the components created previously into the dash app's layout. At the end, we also added an additional html.Div with extra information to demonstrate that it is also possible to add components wihtout creating a variable.
 
 ```python
-app.layout = html.Div([  # TODO: EDIT ME!
+app.layout = html.Div([  
     logoTuna,
     topCards,
     body,
