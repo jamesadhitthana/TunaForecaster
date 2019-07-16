@@ -1,9 +1,9 @@
 <h1 align="center">
-    Tuna Forecaster
+    Tuna Prediction
 </h1>
 <p align="center">
 <sup>
-<b>Forecasting the location of Tuna 🐟 using SVM (Support Vector Machine) through Python and Dash.</b>
+<b>Prediction the location of Tuna 🐟 using SVM (Support Vector Machine) through Python and Dash.</b>
 </sup>
 </p>
 
@@ -269,7 +269,7 @@ if __name__ == "__main__":
     app.run_server(debug=True)
 ```
 
-## Forecasting and SVM
+## Prediction and SVM
 
 ### function1blablablablalaba
 
