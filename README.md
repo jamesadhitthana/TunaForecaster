@@ -3,7 +3,7 @@
 </h1>
 <p align="center">
 <sup>
-<b>Prediction the location of Tuna 🐟 using SVM (Support Vector Machine) through Python and Dash.</b>
+<b>Predicting the location of Tuna 🐟 using SVM (Support Vector Machine) through Python and Dash.</b>
 </sup>
 </p>
 
