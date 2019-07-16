@@ -81,11 +81,13 @@ Since our data is a collection of coordinates, to clean the data, we had to sear
 
 With this seaport CSV file we can then compare if each of the data in the original source is between 11.132KM from the seaports or not. If a point in our data source is less than 11.132KM from any port in the list, then the data is deleted. If a coordinate point is more than 11.133KM from any sea port in the list, then the data is saved.
 
-The distance of 11.132KM is chosen because according to our research, tuna fish tend to start to appear about 7 miles off-shore or about  11.2654KM. Therefore, we had to make sure that all of the coordinates that are in the data source are at least 11 kilometers away from the shore in order to make sure that these boats are fishing for tuna and not fishing for another sea creature. 
-Since our data source uses the decimal degree geographic information system 
-With that information, we must calculate the distance for every decimal coordinate.
+The distance of 11.132KM is chosen because according to our research, tuna fish tend to start to appear about 7 miles off-shore or about  11.2654KM. Therefore, we had to make sure that all of the coordinates that are in the data source are at least 11 kilometers away from the shore in order to make sure that these boats are fishing for tuna and not fishing for other sea creatures. 
 
-#TODO: Jelasin decimal //0.1 = 11.132 km
+Since our data source uses the decimal degree geographic information system that looks like this (-6.228427, 106.609744) instead of looking like this (6°13'42.3"S 106°36'35.1"E) , we can then consult a [table](https://en.wikipedia.org/wiki/Decimal_degrees) that has a list of decimal degree precision versus length. According to the table, since the data source we are using is located at the equator, the length for every 0.1 decimal degree is 11.132km. 
+
+Therefore for every coordinate of the source data that we have, if it is ±0.1 decimal degrees from any seaport that is in the seaport.csv file (this means that it is between 11.132km from any seaport), the coordinate point is deleted from the data source.
+
+
 ```
 sblablablalbalbalblalaba
 ```
