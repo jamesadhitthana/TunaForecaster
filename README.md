@@ -46,19 +46,19 @@ Then copy and paste the IP address to your browser in order to access the applic
 By default, the dashboard shows the "actual" data which consists of the real raw data that we have not manipulated in any way. This data is what we used to train our model on. 
 You can change this by picking the prediction model from the dropdown menu.
 
-![tutorialPickPredictionModel](#)
+![tutorialPickPredictionModel](tut-pick-model.gif)
 
 You can play around with the dashboard by directly manipulating the slider to pick the date and the map and UI will change accordingly.
 
-![tutorial3](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tut-slider.gif)
+![tutoriaSlider](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tut-slider.gif)
 
 You could also specify the sliders to only go through a specific year by picking the year you want on the dropdown list.
 
-![tutorial4](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tut-pick-year.gif)
+![tutoriaYear](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tut-pick-year.gif)
 
 You can also play around with the interactive map by zooming in, picking the points you want, highlighting over the points to see the coordinates and more.
 
-![tutorial6](#)
+![tutoriaMap](tut-map.gif)
 
 Last but not least, you can scroll down and view the individual coordinates of each point from the table on the bottom of the page.
 
