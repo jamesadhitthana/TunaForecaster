@@ -31,14 +31,12 @@ If all works well this is the console should show the IP address of where the da
 
 Then copy and paste the IP address to your browser in order to access the application's user interface and it should show similar to the image below. 
 
-
 ![tutorial2](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/home-cleaned-data-11km-table.PNG)
-
 
 By default, the dashboard shows the "actual" data which consists of the real raw data that we have not manipulated in any way. This data is what we used to train our model on. 
 You can change this by picking the prediction model from the dropdown menu.
 
-
+![tutorialPickPredictionModel](#)
 
 You can play around with the dashboard by directly manipulating the slider to pick the date and the map and UI will change accordingly.
 
@@ -48,17 +46,13 @@ You could also specify the sliders to only go through a specific year by picking
 
 ![tutorial4](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tut-pick-year.gif)
 
-
-
-User can also ...
-Then, user can see the ...
-
-![tutorial5](#)
-
-And the last, the user can see the ...
+You can also play around with the interactive map by zooming in, picking the points you want, highlighting over the points to see the coordinates and more.
 
 ![tutorial6](#)
 
+Last but not least, you can scroll down and view the individual coordinates of each point from the table on the bottom of the page.
+
+![tutorial5](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tut-table-coordinates)
 
 ## Explanation
 
