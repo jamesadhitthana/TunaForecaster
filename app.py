@@ -161,13 +161,13 @@ body = dbc.Container(
                             dcc.Dropdown(
                                 id="dropdownPredictionModel",
                                 options=[  # actual, predicted60, predicted70, predicted80
-                                    {'label': 'actual', 'value': 'actual'},
-                                    {'label': 'cleaned_data_22kmV2',
-                                        'value': 'cleaned_data_22kmV2'},
-                                    {'label': 'cleaned_data_22km',
-                                     'value': 'cleaned_data_22km'},
-                                    {'label': 'cleaned11kmOLD',
-                                        'value': 'cleaned11kmOLD'}
+                                    {'label': 'actual data source (NO TRAINING)', 'value': 'actual'},
+                                    {'label': '60% data training',
+                                        'value': 'Predicted Result60 Cleaned'},
+                                    {'label': '70% data training',
+                                     'value': 'Predicted Result70 Cleaned'},
+                                    {'label': '80% data training',
+                                        'value': 'Predicted Result80 Cleaned'}
                                 ],
                                 value='actual', clearable=False),
                             dbc.Tooltip(
