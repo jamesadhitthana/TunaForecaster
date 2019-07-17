@@ -294,6 +294,7 @@ As explained earlier, the method that we use to create a predictive model is SVM
 * Kernel: RBF
 * Cost: 1
 * Gamma: 0.03
+
 Cost with value 1 and Gamma with value 0.03 is set by the same configuration as default svm function in R which has cost parameter with default value of 1 and Gamma with default value 1/(data dimension)
 
 We make 3 types of prediction models, model that trained using 60% of training data, 70% of training data, and 80% of training data. We also calculate and compare the accuracy of each model by using the rest of the training data as testing data. The accuracy results are as follows:
