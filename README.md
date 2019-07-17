@@ -277,6 +277,8 @@ if __name__ == "__main__":
 
 ## Prediction and SVM
 
+SVM is one of the methods used in machine learning. SVM use hyperplane to classify data and separate them into different classes. In this project we use SVM to classify whether that coordinate has tuna or not. In SVM there are kernel that is used when data not linearly separable so we project from 2D to 3D so we can separate them. In this project we use RBF kernel because each coordinate is being plot close to each other so we want to be able to separate which coordinate has tuna or not accurately.
+
 ### function1blablablablalaba
 
 blablablalbalbalblalaba 
