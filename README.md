@@ -329,7 +329,7 @@ filename = 'finalized_model_60.sav'
 pickle.dump(svmModel, open(filename, 'wb'))
 ```
 
-We predict the existence of tuna from 1 January 2012 until 31 December 2016 by using the data that has been cleaned before. The existence of tuna is indicated by tuna value=1, and if there is no tuna then tuna value=0. The results of the predictions are saved into the CSV file and placed into a new folder. The predicted data now can be visualized by python dash.
+We predict the existence of tuna from 1 January 2012 until 31 December 2016 by using the data that has been cleaned before. The existence of tuna is indicated by tuna value=1, and if there is no tuna then tuna value=0. The results of the predictions are saved into the CSV file and placed into a folder. The predicted data now can be visualized by python dash.
 
 
 ## Built With
