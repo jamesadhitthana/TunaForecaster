@@ -320,13 +320,16 @@ y_svm = svmModel.predict(x_test)
 print("Accuracy score: ", accuracy_score(y_test, y_svm))
 ```
 
-The model saved into SAV file format and then we can load it to make a prediction. 
+The model saved into SAV file format and then we can load it to make a prediction:
 ```python
 import pickle
 
 # save the model as a finalized_model_60.sav for example
 filename = 'finalized_model_60.sav'
 pickle.dump(svmModel, open(filename, 'wb'))
+
+# load the model
+svmModel = pickle.load(open("finalized_model_60.sav", 'rb'))
 ```
 
 We predict the existence of tuna from 1 January 2012 until 31 December 2016 by using the data that has been cleaned before. The existence of tuna is indicated by tuna value=1, and if there is no tuna then tuna value=0. The results of the predictions are saved into the CSV file and placed into a folder. The predicted data now can be visualized by python dash.
