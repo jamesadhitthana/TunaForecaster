@@ -300,7 +300,7 @@ We make 3 types of prediction models, model that trained using 60% of training d
 * Trained using 70% of training data and tested using 30% of training data: 0.7527728114811788
 * Trained using 60% of training data and tested using 40% of training data: 0.7538558617593165
 
-The python script to make prediction model can be seen below
+The python script to make prediction model can be seen below:
 ```python
 from sklearn import svm
 from sklearn.model_selection import train_test_split
@@ -317,7 +317,7 @@ svmModel.fit(x_train, y_train)
 
 # test the accuracy of the model
 y_svm = svmModel.predict(x_test)
-print("Akurasi SVM : ", accuracy_score(y_test, y_svm))
+print("Accuracy score: ", accuracy_score(y_test, y_svm))
 ```
 
 The model saved into SAV file format and then we can load it to make a prediction. 
