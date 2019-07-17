@@ -277,11 +277,32 @@ if __name__ == "__main__":
 
 ## Prediction and SVM
 
+### Support Vector Machine (SVM)
+
 SVM is one of the methods used in machine learning. SVM use hyperplane to classify data and separate them into different classes. In this project we use SVM to classify whether that coordinate has tuna or not. In SVM there are kernel that is used when data not linearly separable so we project from 2D to 3D so we can separate them. In this project we use RBF kernel because each coordinate is being plot close to each other so we want to be able to separate which coordinate has tuna or not accurately.
 
-### function1blablablablalaba
+### Making Predictions
 
-blablablalbalbalblalaba 
+From existing data, we can make a prediction model for predicting the existence of tuna. We write a python script to create the predictive model and also making predictions. Python libraries that we use are as follows:
+* OS: for operating system functionality. We use it to read a list of files from a directory.
+* Pandas: for data manipulation and analysis.
+* Sklearn: for machine learning. We use it to make model and making predictions.
+* Numpy: for scientific computing.
+* Pickle: for saving and loading the resulting prediction model.
+
+As explained earlier, the method that we use to create a predictive model is SVM. Model are trained with the following parameters:
+* Kernel: RBF
+* Cost: 1
+* Gamma: 0.03
+
+We make 3 types of prediction models, model that trained using 60% of training data, 70% of training data, and 80% of training data. We also calculate and compare the accuracy of each model by using the rest of the training data as testing data. The accuracy results are as follows:
+* Trained using 80% of training data and tested using 20% of training data: 0.7529093402259517
+* Trained using 70% of training data and tested using 30% of training data: 0.7527728114811788
+* Trained using 60% of training data and tested using 40% of training data: 0.7538558617593165
+
+The model saved into SAV file format and then we can load it to make a prediction. We predict the existence of tuna from 1 January 2012 until 31 December 2016 by using the data that has been cleaned before. The existence of tuna is indicated by tuna value=1, and if there is no tuna then tuna value=0. The results of the predictions are saved into the CSV file and placed into a new folder. The predicted data now can be visualized by python dash.
+ 
+
 ```python
 sblablablalbalbalblalaba
 ```
