@@ -338,6 +338,7 @@ We predict the existence of tuna from 1 January 2012 until 31 December 2016 by u
 * [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) - Bootstrap components on Dash
 * [Plotly](https://plot.ly/) - Plotly graph
 * [Mapbox](https://www.mapbox.com/) - Mapbox Map API
+* [Scikit-learn](https://scikit-learn.org) - Scikit-learn
 
 ## Authors
 
