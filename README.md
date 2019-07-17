@@ -294,6 +294,7 @@ As explained earlier, the method that we use to create a predictive model is SVM
 * Kernel: RBF
 * Cost: 1
 * Gamma: 0.03
+Cost with value 1 and Gamma with value 0.03 is set by the same configuration as default svm function in R which has cost parameter with default value of 1 and Gamma with default value 1/(data dimension)
 
 We make 3 types of prediction models, model that trained using 60% of training data, 70% of training data, and 80% of training data. We also calculate and compare the accuracy of each model by using the rest of the training data as testing data. The accuracy results are as follows:
 * Trained using 80% of training data and tested using 20% of training data: 0.7529093402259517
@@ -354,4 +355,6 @@ We predict the existence of tuna from 1 January 2012 until 31 December 2016 by u
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
-* Fish data by [Global Fishing Watch](https://globalfishingwatch.org/)
+* Fishing vessel data in csv format by [Global Fishing Watch](https://globalfishingwatch.org/)
+* sst data in netCDF format by [NOAA](https://www.esrl.noaa.gov/psd/)
+* chlorophyll concentration data in netCDF format by [OceanWatch](https://oceanwatch.pifsc.noaa.gov/erddap/griddap/index.html?page=1&itemsPerPage=1000)
