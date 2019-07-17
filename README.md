@@ -291,9 +291,9 @@ blablablalbalbalblalaba
 
 ## Authors
 
-* **James Adhitthana** - [jamesadhitthana](https://github.com/jamesadhitthana)
 * **Christopher Yefta** - [ChrisYef](https://github.com/ChrisYef)
 * **Deananda Irwansyah** - [hikariyoru](https://github.com/hikariyoru)
+* **James Adhitthana** - [jamesadhitthana](https://github.com/jamesadhitthana)
 
 ## License
 
