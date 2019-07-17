@@ -300,16 +300,37 @@ We make 3 types of prediction models, model that trained using 60% of training d
 * Trained using 70% of training data and tested using 30% of training data: 0.7527728114811788
 * Trained using 60% of training data and tested using 40% of training data: 0.7538558617593165
 
-The model saved into SAV file format and then we can load it to make a prediction. We predict the existence of tuna from 1 January 2012 until 31 December 2016 by using the data that has been cleaned before. The existence of tuna is indicated by tuna value=1, and if there is no tuna then tuna value=0. The results of the predictions are saved into the CSV file and placed into a new folder. The predicted data now can be visualized by python dash.
- 
+The python script to make prediction model can be seen below
+```python
+from sklearn import svm
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
-```python
-sblablablalbalbalblalaba
+# split the training data, for example: 40% of training data for training and 60% of training data for testing
+x_train, x_test, y_train, y_test = train_test_split(x_training, y_training, test_size = 0.40)
+
+# create a new SVM model
+svmModel = svm.SVC(kernel='rbf', C=1 ,gamma=0.03, verbose=1)
+
+# train the SVM model
+svmModel.fit(x_train, y_train)
+
+# test the accuracy of the model
+y_svm = svmModel.predict(x_test)
+print("Akurasi SVM : ", accuracy_score(y_test, y_svm))
 ```
-blablablalbalbalblalaba
+
+The model saved into SAV file format and then we can load it to make a prediction. 
 ```python
-blablablalbalbalblalaba
+import pickle
+
+# save the model as a finalized_model_60.sav for example
+filename = 'finalized_model_60.sav'
+pickle.dump(svmModel, open(filename, 'wb'))
 ```
+
+We predict the existence of tuna from 1 January 2012 until 31 December 2016 by using the data that has been cleaned before. The existence of tuna is indicated by tuna value=1, and if there is no tuna then tuna value=0. The results of the predictions are saved into the CSV file and placed into a new folder. The predicted data now can be visualized by python dash.
+
 
 ## Built With
 * [Python](https://www.python.org/) - Python Programming Language
