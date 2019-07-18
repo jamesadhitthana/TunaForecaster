@@ -1,10 +1,10 @@
 #TODO LIST:
-    -diagram buat cleaner
-    -regression 
-    -SVM tambahin formula nya
-    -jelasin SVM lebih dalam
-    -fix references
-    -ganti jadi tabel
+    - diagram buat cleaner
+    - regression 
+    - SVM tambahin formula nya
+    - jelasin SVM lebih dalam
+    - fix references
+    - ganti jadi tabel
 
 
 <h1 align="center">
