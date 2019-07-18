@@ -368,3 +368,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 * Fishing vessel data in csv format by [Global Fishing Watch](https://globalfishingwatch.org/)
 * sst data in netCDF format by [NOAA](https://www.esrl.noaa.gov/psd/)
 * chlorophyll concentration data in netCDF format by [OceanWatch](https://oceanwatch.pifsc.noaa.gov/erddap/griddap/index.html?page=1&itemsPerPage=1000)
+* Table of decimal degrees [Decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees)
+
+## References
+//paper yang refer ke dokumentasi//
