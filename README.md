@@ -5,6 +5,7 @@
     - jelasin SVM lebih dalam
     - fix references
     - ganti jadi tabel
+    - requirements.txt tambahin
 
 
 <h1 align="center">
