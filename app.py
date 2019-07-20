@@ -15,13 +15,14 @@ mapbox_access_token = "pk.eyJ1IjoicHJpeWF0aGFyc2FuIiwiYSI6ImNqbGRyMGQ5YTBhcmkzcX
 listOfFiles = []
 # by default the "." value will make it the current working directory of the py file
 defaultFolderDirectory = "."
-currentChosenPredictionModel = "\\actual\\"
+currentChosenPredictionModel = "\\Combined Actual\\"  # TODO: Change me
 try:
     # change me
     for folderName, subFolders, fileNames in os.walk(defaultFolderDirectory+currentChosenPredictionModel):
         # print("The filenames in "+folderName+" are: "+str(fileNames))
         for files in fileNames:
             listOfFiles.append(files)
+            print(files)
     print("\nSuccessfuly loaded List of Files:",
           len(listOfFiles), "files total")
 except Exception as e:
@@ -59,9 +60,11 @@ logoTuna = dbc.Navbar(
                          children=[
                              dbc.DropdownMenuItem(
                                  "Deananda Irwansyah", href="https://github.com/hikariyoru"),
-                             dbc.DropdownMenuItem("Christopher Yefta", href="https://github.com/ChrisYef"),
-                            #  dbc.DropdownMenuItem(divider=True),
-                             dbc.DropdownMenuItem("James Adhitthana", href="https://github.com/jamesadhitthana"),
+                             dbc.DropdownMenuItem(
+                                 "Christopher Yefta", href="https://github.com/ChrisYef"),
+                             #  dbc.DropdownMenuItem(divider=True),
+                             dbc.DropdownMenuItem(
+                                 "James Adhitthana", href="https://github.com/jamesadhitthana"),
                          ],
                          nav=True,
                          in_navbar=True,
@@ -125,7 +128,7 @@ topCards = dbc.Container(
                 dbc.Col(dbc.Card(
                     dbc.CardBody(
                         [
-                            html.H5(str(len(listOfFiles)),
+                            html.H5(str("1827"),
                                     className="card-title"),
                             html.P(
                                 "days worth of data",
@@ -161,15 +164,16 @@ body = dbc.Container(
                             dcc.Dropdown(
                                 id="dropdownPredictionModel",
                                 options=[  # actual, predicted60, predicted70, predicted80
-                                    {'label': 'actual data source (NO TRAINING)', 'value': 'actual'},
+                                    {'label': 'actual data source (NO TRAINING)',
+                                     'value': 'Combined Actual'},
                                     {'label': '60% data training',
-                                        'value': 'Predicted Result60 Cleaned'},
+                                        'value': 'Combined Result60'},
                                     {'label': '70% data training',
-                                     'value': 'Predicted Result70 Cleaned'},
+                                     'value': 'Combined Result70'},
                                     {'label': '80% data training',
-                                        'value': 'Predicted Result80 Cleaned'}
+                                        'value': 'Combined Result80'}
                                 ],
-                                value='actual', clearable=False),
+                                value='Combined Actual', clearable=False),
                             dbc.Tooltip(
                                 "Choose the prediction model or dataset to show on the map.",
                                 target="dropdownPredictionModel",
@@ -178,28 +182,8 @@ body = dbc.Container(
                         ],  # className="nine columns"
                         ),
 
-                        # =-=-=-HTML DIv for Dropdown=-=-=-
-                        html.H5("Pick the year:",),
-                        html.Div([
-                            dcc.Dropdown(
-                                id="dropdownYear",
-                                options=[
-                                    {'label': 'All Years',
-                                     'value': 'All Years'},
-                                    {'label': '2012', 'value': '2012'},
-                                    {'label': '2013', 'value': '2013'},
-                                    {'label': '2014', 'value': '2014'},
-                                    {'label': '2015', 'value': '2015'},
-                                    {'label': '2016', 'value': '2016'}
-                                ],
-                                value='All Years', clearable=False),
-                            dbc.Tooltip(
-                                "Select the year in order to limit the slider to only pick the selected year.",
-                                target="dropdownYear",
-                            ),
-                        ],  # className="nine columns"
-                        ),
-
+                        # =-=-=-HTML Line Break=-=-=-
+                        html.Br(),
                         # =-=-=-HTML DIv for Slider=-=-=-
                         html.H5("Pick your date:",
                                 className="three columns"),
@@ -210,6 +194,13 @@ body = dbc.Container(
                                 max=len(listOfFiles)-1,
                                 value=0)
                         ], className="nine columns"),
+                        html.Br(),
+                        dcc.Loading(
+                            id="loading-2",
+                            children=[
+                                html.Div([html.Div(id="loading-output-2")])],
+                            type="default",
+                        ),
                     ],
                     md=4,
                 ),
@@ -217,6 +208,7 @@ body = dbc.Container(
                     "Slide me to change the date!",
                     target="dateSlider",
                 ),
+
                 # -----Mapbox Column----- #
                 dbc.Col(
                     [
@@ -316,7 +308,8 @@ def changeDate(selector, valueDropdown):
         print("File "+defaultFolderDirectory+currentChosenPredictionModel+selectedDate +
               " from listOfFiles["+str(selector)+"]"+" loaded successfully ")
         # -4 because we want to get rid of the ".csv" file extension
-        labelBaru = selectedDate[: -4]
+        labelBaru = calculateLabel(selectedDate)
+
     except Exception as e:
         print(
             "ERROR kykny filenya ga ada deh di Current working directorynya: ", os.getcwd())
@@ -326,70 +319,54 @@ def changeDate(selector, valueDropdown):
     # --
     data = dataBaru.to_dict("rows")  # get the rows for each columns
     labelNumberOfTunaLocationsInSelection = str(len(data))
-    # Change the datePicker date
-    yearConverted = int(labelBaru[0: 4])
-
-    if(labelBaru[5: 7][0] == "0"):
-        monthConverted = int(labelBaru[5: 7].lstrip("0"))
-    else:
-        monthConverted = int(labelBaru[5: 7])
-
-    if(labelBaru[8: 10][0] == "0"):
-        dateConverted = int(labelBaru[8: 10].lstrip("0"))
-    else:
-        dateConverted = int(labelBaru[8: 10])
-    dateBaru = datetime(yearConverted, monthConverted, dateConverted)
-    # --
 
     return data, labelBaru, labelNumberOfTunaLocationsInSelection  # ,dateBaru
 
 
-#---------Callback Dropdown to Slider---------#
-@app.callback(
-    # set the output as the checkbox's options
-    [  # dash.dependencies.Output("dateSlider", "marks"),
-        dash.dependencies.Output("dateSlider", "max"),
-        dash.dependencies.Output("dateSlider", "min")],
-    # set the iniput as the radiobutton's values
-    [dash.dependencies.Input("dropdownYear", "value"),
-     # dash.dependencies.Input("datePicker", "date")
-     ]
-)
-def changeYear(selector):  # , datePickerDate):
-    selectedYear = selector
-    if(selectedYear != "All Years"):
-        print("\nChanged Year to: "+selectedYear)
-        selectedYearFileIndexesLocations = []
-        try:
-            for i in range(len(listOfFiles)):
-                if(listOfFiles[i].startswith(selectedYear)):
-                    # print("["+str(i)+"] ", end='')
-                    # print(listOfFiles[i])
-                    selectedYearFileIndexesLocations.append(i)
-        except Exception as e:
-            print("ERROR: in dropdown menu. - ", e)
+def calculateLabel(selectedDate):
+    labelBaru = selectedDate[: -4]
 
-        maxDate = selectedYearFileIndexesLocations[len(
-            selectedYearFileIndexesLocations)-1]
-        minDate = selectedYearFileIndexesLocations[0]
-        # marks = {
-        #     i: listOfFiles[i]
-        #     for i in range(minDate, maxDate)
-        # }
+    chosenMonth = labelBaru[0:2]
+
+    chosenDate = labelBaru[3:5]
+
+    if chosenDate[0] == "0":
+        chosenDate = chosenDate[1]
+
+    if chosenMonth == "01":
+        labelBaru = "January "+chosenDate  # +" ("+labelBaru+")"
+    elif chosenMonth == "02":
+        labelBaru = "February "+chosenDate  # +" ("+labelBaru+")"
+    elif chosenMonth == "03":
+        labelBaru = "March "+chosenDate  # +" ("+labelBaru+")"
+    elif chosenMonth == "04":
+        labelBaru = "April "+chosenDate  # +" ("+labelBaru+")"
+    elif chosenMonth == "05":
+        labelBaru = "May "+chosenDate  # +" ("+labelBaru+")"
+    elif chosenMonth == "06":
+        labelBaru = "June "+chosenDate  # +" ("+labelBaru+")"
+    elif chosenMonth == "07":
+        labelBaru = "July "+chosenDate  # +" ("+labelBaru+")"
+    elif chosenMonth == "08":
+        labelBaru = "August "+chosenDate  # +" ("+labelBaru+")"
+    elif chosenMonth == "09":
+        labelBaru = "September "+chosenDate  # +" ("+labelBaru+")"
+    elif chosenMonth == "10":
+        labelBaru = "October "+chosenDate  # +" ("+labelBaru+")"
+    elif chosenMonth == "11":
+        labelBaru = "November "+chosenDate  # +" ("+labelBaru+")"
+    elif chosenMonth == "12":
+        labelBaru = "December "+chosenDate  # +" ("+labelBaru+")"
     else:
-        print("All Years Chosen In Dropdown Menu")
-        maxDate = len(listOfFiles)-1
-        minDate = 0
-        # marks = {
-        #     i: listOfFiles[i]
-        #     for i in range(0, len(listOfFiles))
-        # }
-    return maxDate, minDate
-
+        labelBaru = "No month?: "+" ("+labelBaru+")"
+    return labelBaru
 
 #---------Callback Mapbox---------#
+
+
 @app.callback(
-    dash.dependencies.Output("map-graph", "figure"),  # output to map graph
+    [dash.dependencies.Output("map-graph", "figure"),
+     dash.dependencies.Output("loading-output-2", "children"), ],  # output to map graph
     [dash.dependencies.Input("tableFish", "data"),
      dash.dependencies.Input("labelChosenDate", "children"), ])  # input from dropdown list
 def update_graph(data, labelChosenDate):
@@ -436,7 +413,9 @@ def update_graph(data, labelChosenDate):
     except Exception as e:
         print("Error getting map date", e)
 
-    return {"data": trace1, "layout": layout1}
+    # TODO: PUT LOADING
+
+    return {"data": trace1, "layout": layout1}, ""
 
 
 #---Callback dropdown prediction model---#
@@ -450,8 +429,9 @@ def changeLabelChosenPredictionModel(selector):  # , datePickerDate):
     labelBaru = selector  # change label
     return labelBaru
 
+# --Custom Functions
+
 
 #---Main---#
-
 if __name__ == "__main__":
     app.run_server(debug=True)
