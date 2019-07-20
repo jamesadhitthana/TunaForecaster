@@ -410,7 +410,7 @@ We predict the existence of tuna from 1 January 2012 until 31 December 2016 by u
 * [Python](https://www.python.org/) - Python Programming Language
 * [Dash](https://plot.ly/dash/) - Dash
 * [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) - Bootstrap components on Dash
-* [Cosmo] (https://bootswatch.com/cosmo/) - Bootstrap theme
+* [Cosmo](https://bootswatch.com/cosmo/) - Bootstrap theme
 * [Plotly](https://plot.ly/) - Plotly graph
 * [Mapbox](https://www.mapbox.com/) - Mapbox Map API
 * [Scikit-learn](https://scikit-learn.org) - Scikit-learn
