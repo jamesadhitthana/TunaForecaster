@@ -1,0 +1,9 @@
+dash
+dash-bootstrap-components
+dash-table
+dash-core-components
+dash-html-components
+Flask
+gunicorn
+pandas
+plotly
