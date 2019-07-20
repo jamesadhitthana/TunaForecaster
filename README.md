@@ -91,10 +91,7 @@ Before the data is trained, we had to clean the data first in order for our mode
 
 This python script is responsible for automatically iterating through the original data source folder, cleaning the data, and then saving the new cleaned data files in a new folder. 
 
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part1.png">
-</p>
+![flowchart tuna cleaning from source](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part1.png)
 
 Since our data is a collection of coordinates of boats around Southeast Asia we wanted to make sure that these boats are out to fish and not parked in a sea port. Therefore, to clean the data, we had to search for the coordinates of seaports that surround Southeast Asia and also sea ports along the northern coast of Australia and then compile these coordinates into a .CSV file. 
 
@@ -134,6 +131,11 @@ This function checkLatLng(...) returns the result of the checked latitude, longi
 
 This function contains the main calculation that it needs to check whether it is ±0.1 decimal degrees from the port. It works by checking the latitude and longitude of a coordinate point with the latitude of the port's latitude longitude. If the current coordinate it is less than -0.1 of the any port or more than +0.1 of any port it will add the coordinate to the final file. This is because it means that it is at least 11.132km further north, east, south, and west than any seaport in the seaPort.csv file.
 
+### yesTunaCleaner.py
+
+This is another python script is responsible for automatically iterating through the predicted data folder, cleaning the data, and then saving the new cleaned data files in a new folder. 
+
+![flowchart tuna cleaning from source](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part2.png)
 
 ## Dash Dashboard with Bootstrap
 
