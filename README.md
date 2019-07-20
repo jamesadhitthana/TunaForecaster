@@ -133,15 +133,63 @@ This function checkLatLng(...) returns the result of the checked latitude, longi
 
 This function contains the main calculation that it needs to check whether it is ±0.1 decimal degrees from the port. It works by checking the latitude and longitude of a coordinate point with the latitude of the port's latitude longitude. If the current coordinate it is less than -0.1 of the any port or more than +0.1 of any port it will add the coordinate to the final file. This is because it means that it is at least 11.132km further north, east, south, and west than any seaport in the seaPort.csv file.
 
+## Data Cleansing Part 2
+
+*Read the [Support Vector Machine (SVM) chapter](#Support Vector Machine (SVM)) to understand why this cleaner is used*
+
+*This cleaner is used right after predicting the data to check whether the data contains a column that has tuna == 1 or tuna == 0. 
+
 ### yesTunaCleaner.py
 
-This cleaner is used right after predicting the data to check whether the data contains tuna == 1 or does not. *read the Prediction and SVM chapter to understand why this cleaner is used*
-
-It works in a similar way by iterating through the predicted data folder, cleaning the data, and then saving the new cleaned data files in a new folder. 
+This cleaner works in a similar way by iterating through the predicted data folder, cleaning the data, and then saving the new cleaned data files in a new folder. 
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part2.png">
 </p>
+
+#### Functionalities
+
+```
+for i in range(len(listOfFiles)):
+    cleanFile(defaultFolderDirectory+folderOfDataToClean +
+              listOfFiles[i], cleanedFolderPath)
+print("Successfully cleaned", len(listOfFiles), "files")
+```
+The function above takes the original folder that contains the files to clean and then a list of files that are in the folder and the output folder directory. This is the main function that we created in order to clean a single file and save it in the target file. Therefore to clean all the files in the folder, in the script we created a for loop to call this function according to all of the files that exists in our folder.
+
+```
+    for i in range(0, len(dataFrameLatLngSource["lat"])):
+
+        if dataFrameLatLngSource["tuna"][i] == 1:
+            # access first dataframe index (after header)
+            listOfLat.append(dataFrameLatLngSource["lat"][i])
+            listOfLng.append(dataFrameLatLngSource["lon"][i])
+
+            listOfSST.append(dataFrameLatLngSource["sst"][i])  # new
+            listOfChlorophyll.append(
+                dataFrameLatLngSource["chlorophyll"][i])  # new
+            listOfTuna.append(dataFrameLatLngSource["tuna"][i]) #new tuna
+```
+The snippet above shows how the data is checked if it contains the column "tuna" == 1. If it does, then the data that corresponds to that iteration is stored in the appropriate lists.
+```
+    dataCoba = {"lat": listOfLat,
+                "lon": listOfLng,
+                "sst": listOfSST,
+                "chlorophyll": listOfChlorophyll,
+                "tuna": listOfTuna}
+    dataFrameCoba = pd.DataFrame(dataCoba)
+```
+The code above shows how all of the lists that contains the stored coordinate dadta is combined together into a single dataframe so that it can be saved to a CSV in the next step.
+```
+  try:
+        dataFrameCoba.to_csv(
+            str(".\\"+targetFolderForCleanedFiles+"\\"+sourceFile[-14:]), index=False)
+        print("Data saved successfuly to", str(
+            ".\\"+targetFolderForCleanedFiles+"\\"+sourceFile[-14:]))
+    except Exception as e:
+        print("Error: failed to save to csv :( \n", e)  # TODO: Fix this
+```
+THe snippet aboves shows how a dataframe is saved into a csv file according to the source file's original filename into the target folder.
 
 ## Dash Dashboard with Bootstrap
 
