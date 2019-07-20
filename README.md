@@ -100,7 +100,7 @@ With this seaport CSV file we can then compare if each of the data in the origin
 
 The distance of 11.132KM is chosen because according to our research, tuna fish tend to start to appear about 7 miles off-shore or about  11.2654KM. Therefore, we had to make sure that all of the coordinates that are in the data source are at least 11 kilometers away from the shore in order to make sure that these boats are fishing for tuna and not fishing for other sea creatures. 
 
-Since our data source uses the decimal degree geographic information system that looks like this (-6.228427, 106.609744) instead of looking like this (6°13'42.3"S 106°36'35.1"E) , we can then consult a [table](https://en.wikipedia.org/wiki/Decimal_degrees) that has a list of decimal degree precision versus length. According to the table, since the data source we are using is located at the equator, the length for every 0.1 decimal degree is 11.132km. 
+Since our data source uses the decimal degree geographic information system that looks like this (-6.228427, 106.609744) instead of looking like this (6°13'42.3"S 106°36'35.1"E) , we can then consult a [table](http://aishe.nic.in/aishe/viewDocument.action?documentId=154) that has a list of decimal degree precision versus length. According to the table, since the data source we are using is located at the equator, the length for every 0.1 decimal degree is 11.132km. 
 
 Therefore for every coordinate of the source data that we have, if it is ±0.1 decimal degrees from any seaport that is in the seaPort.csv file (this means that it is between 11.132km from any seaport), the coordinate point is deleted from the data source.
 
@@ -410,6 +410,7 @@ We predict the existence of tuna from 1 January 2012 until 31 December 2016 by u
 * [Python](https://www.python.org/) - Python Programming Language
 * [Dash](https://plot.ly/dash/) - Dash
 * [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) - Bootstrap components on Dash
+* [Cosmo] (https://bootswatch.com/cosmo/) - Bootstrap theme
 * [Plotly](https://plot.ly/) - Plotly graph
 * [Mapbox](https://www.mapbox.com/) - Mapbox Map API
 * [Scikit-learn](https://scikit-learn.org) - Scikit-learn
@@ -434,4 +435,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 * [All India Survey on Higher Education. Guidelines for Filling Geographical Referencing Details. PDF. India: Government of India.](http://aishe.nic.in/aishe/viewDocument.action?documentId=154)
 
 
-//paper yang refer ke dokumentasi//
