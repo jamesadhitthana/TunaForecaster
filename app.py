@@ -156,7 +156,7 @@ body = dbc.Container(
                     [
                         html.H2("Choose Settings"),
                         html.P('''
-                                    Pick the year and then play around with the sliders to select the date on the map. You can also view the individual latitude and longitude on the table below.
+                                    Play around with the sliders to select the date on the map. You can also view the individual latitude and longitude on the table below.
                                 '''),
                         # =-=-=-HTML DIv for Dropdown for prediction model picker=-=-=-
                         html.Hr(),
