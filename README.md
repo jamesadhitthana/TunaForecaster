@@ -135,7 +135,7 @@ This function contains the main calculation that it needs to check whether it is
 
 ## Data Cleansing Part 2
 
-*Read the [Support Vector Machine (SVM) chapter](###-Support-Vector-Machine-(SVM)) to understand why this cleaner is used*
+*Read the [Support Vector Machine (SVM) chapter](#Support-Vector-Machine-(SVM)) to understand why this cleaner is used*
 
 *This cleaner is used right after predicting the data to check whether the data contains a column that has tuna == 1 or tuna == 0. 
 
