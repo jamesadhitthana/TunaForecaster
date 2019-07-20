@@ -6,6 +6,7 @@ import dash_table as dt
 import pandas as pd
 import plotly.graph_objs as go
 import os
+import subprocess
 from datetime import datetime
 #---API Keys---#
 mapbox_access_token = "pk.eyJ1IjoicHJpeWF0aGFyc2FuIiwiYSI6ImNqbGRyMGQ5YTBhcmkzcXF6YWZldnVvZXoifQ.sN7gyyHTIq1BSfHQRBZdHA"
@@ -195,6 +196,9 @@ body = dbc.Container(
                                 value=0)
                         ], className="nine columns"),
                         html.Br(),
+                        #--Button--#
+                        html.P(id='button-output'),
+                        #End of: Button--#
                         dcc.Loading(
                             id="loading-2",
                             children=[
@@ -241,6 +245,14 @@ tableBottom = dbc.Container(
                             "Note: Some fields may be empty because there are data that are not available.", color="info"),
                         html.P(
                             "Each row represents a coordinate of a predicted location of tuna."),
+                        dbc.Button("Download",
+                                   id="download-button",
+                                   color="secondary"),
+                        dbc.Tooltip(
+                            "Download the complete chosen data table.",
+                            target="download-button",
+                        ),
+                        html.Br(),
                         dt.DataTable(
                             id="tableFish",
                             columns=[
@@ -289,6 +301,7 @@ app.layout = html.Div([  # TODO: EDIT ME!
     [dash.dependencies.Output("tableFish", "data"),
      dash.dependencies.Output("labelChosenDate", "children"),
      dash.dependencies.Output("numberOfTunaLocationsInSelection", "children"),
+     dash.dependencies.Output("download-button", "children"),
      # dash.dependencies.Output("datePicker", "date"),
      ],
     # set the iniput as the radiobutton's values
@@ -320,7 +333,7 @@ def changeDate(selector, valueDropdown):
     data = dataBaru.to_dict("rows")  # get the rows for each columns
     labelNumberOfTunaLocationsInSelection = str(len(data))
 
-    return data, labelBaru, labelNumberOfTunaLocationsInSelection  # ,dateBaru
+    return data, labelBaru, labelNumberOfTunaLocationsInSelection, "Download "+selectedDate
 
 
 def calculateLabel(selectedDate):
@@ -429,7 +442,23 @@ def changeLabelChosenPredictionModel(selector):  # , datePickerDate):
     labelBaru = selector  # change label
     return labelBaru
 
-# --Custom Functions
+# --Callback Download Button-- #
+
+
+@app.callback(
+    dash.dependencies.Output("button-output", "children"),
+    [dash.dependencies.Input("download-button", "n_clicks")],
+    [dash.dependencies.State('download-button', 'children')],
+)
+def on_button_click(n, stringDownload):
+    print("lol"+str(n))
+    if(n != None):
+        try:
+            subprocess.Popen(r'explorer /select,'+defaultFolderDirectory +
+                             currentChosenPredictionModel+stringDownload[-9:])
+            print("great success")
+        except Exception as e:
+            print("-----------------------faileedddd", e)
 
 
 #---Main---#
