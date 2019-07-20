@@ -66,10 +66,6 @@ You can play around with the dashboard by directly manipulating the slider to pi
 
 ![tutoriaSlider](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tut-slider.gif)
 
-You could also specify the sliders to only go through a specific year by picking the year you want on the dropdown list.
-
-![tutoriaYear](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tut-pick-year.gif)
-
 You can also play around with the interactive map by zooming in, picking the points you want, highlighting over the points to see the coordinates and more.
 
 ![tutoriaMap](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tut-map.gif)
