@@ -91,7 +91,9 @@ Before the data is trained, we had to clean the data first in order for our mode
 
 This python script is responsible for automatically iterating through the original data source folder, cleaning the data, and then saving the new cleaned data files in a new folder. 
 
-![flowchart tuna cleaning from source](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part1.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part1.png">
+</p>
 
 Since our data is a collection of coordinates of boats around Southeast Asia we wanted to make sure that these boats are out to fish and not parked in a sea port. Therefore, to clean the data, we had to search for the coordinates of seaports that surround Southeast Asia and also sea ports along the northern coast of Australia and then compile these coordinates into a .CSV file. 
 
@@ -133,9 +135,13 @@ This function contains the main calculation that it needs to check whether it is
 
 ### yesTunaCleaner.py
 
-This is another python script is responsible for automatically iterating through the predicted data folder, cleaning the data, and then saving the new cleaned data files in a new folder. 
+This cleaner is used right after predicting the data to check whether the data contains tuna == 1 or does not. *read the Prediction and SVM chapter to understand why this cleaner is used*
 
-![flowchart tuna cleaning from source](https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part2.png)
+It works in a similar way by iterating through the predicted data folder, cleaning the data, and then saving the new cleaned data files in a new folder. 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part2.png">
+</p>
 
 ## Dash Dashboard with Bootstrap
 
