@@ -1,5 +1,4 @@
 #TODO LIST:
-    - diagram buat cleaner
     - regression 
     - SVM tambahin formula nya
     - jelasin SVM lebih dalam
