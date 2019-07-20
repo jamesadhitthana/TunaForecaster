@@ -127,7 +127,7 @@ latChecked, lngChecked, sstChecked, chlorophyllChecked = checkLatLng(portLat, po
 ```
 This function checkLatLng(...) returns the result of the checked latitude, longitude, SST, and chlorophyll if it is not in the 11.132km radius of any port in the seaPort.csv file. This function needs the current port's lat and long along with the list of latitude, longitude, sst, list of chlorophyll and the decimal degree to check.
 
-This function contains the main calculation that it needs to check whether it is ±0.1 decimal degrees from the port. It works by checking the latitude and longitude of a coordinate point with the latitude of the port's latitude longitude. If the current coordinate it is less than -0.1 of the any port or more than +0.1 of any port it will add the coordinate to the final file. This is because it means that it is at least 1.132km further north, east, south, and west than any seaport in the seaPort.csv file.
+This function contains the main calculation that it needs to check whether it is ±0.1 decimal degrees from the port. It works by checking the latitude and longitude of a coordinate point with the latitude of the port's latitude longitude. If the current coordinate it is less than -0.1 of the any port or more than +0.1 of any port it will add the coordinate to the final file. This is because it means that it is at least 11.132km further north, east, south, and west than any seaport in the seaPort.csv file.
 
 
 ## Dash Dashboard with Bootstrap
