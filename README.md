@@ -137,7 +137,7 @@ This function contains the main calculation that it needs to check whether it is
 
 *Read the [Making Predictions chapter](#making-predictions) to understand why this cleaner is used.*
 
-This cleaner is used right after predicting the data through SVM to check whether the data contains a column that has tuna == 1 or tuna == 0. 
+This cleaner is used _right after_ predicting the data through SVM to check whether the data contains a column that has tuna == 1 or tuna == 0. 
 
 ### yesTunaCleaner.py
 
