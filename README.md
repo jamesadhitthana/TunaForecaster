@@ -431,4 +431,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 * Table of decimal degrees [Decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees)
 
 ## References
+* [All India Survey on Higher Education. Guidelines for Filling Geographical Referencing Details. PDF. India: Government of India.](http://aishe.nic.in/aishe/viewDocument.action?documentId=154)
+
+
 //paper yang refer ke dokumentasi//
