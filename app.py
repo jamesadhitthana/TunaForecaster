@@ -451,14 +451,12 @@ def changeLabelChosenPredictionModel(selector):  # , datePickerDate):
     [dash.dependencies.State('download-button', 'children')],
 )
 def on_button_click(n, stringDownload):
-    print("lol"+str(n))
     if(n != None):
         try:
             subprocess.Popen(r'explorer /select,'+defaultFolderDirectory +
                              currentChosenPredictionModel+stringDownload[-9:])
-            print("great success")
         except Exception as e:
-            print("-----------------------faileedddd", e)
+            print("-----------------------to download file", e)
 
 
 #---Main---#
