@@ -43,7 +43,7 @@ Python 3 with the following additional libraries:
 ### Running the application
 
 Make sure you have all the prerequisites installed and you are connected to the internet.
-Then clone/download "*TunaForecasterFinal.zip*", extract the folder, open terminal/cmd and navigate to the folder and run app.py:
+Then clone/download "*CombinedUPDATED.zip.zip*", extract the folder, open terminal/cmd and navigate to the folder and run app.py:
 
 ```bash
 python app.py
