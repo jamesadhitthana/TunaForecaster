@@ -372,27 +372,38 @@ The selected data is 412034 rows from 578453 rows that will be used as training 
 
 ### Making Predictions with Orange
 
-From existing data, we can make a prediction model for predicting the existence of tuna. We can use Orange software to make the predictive model.
+From existing data, we can make a prediction model for predicting the existence of tuna. We can use Orange software to make the predictive model. First, we do a test and score to see the accuracy of the predictive model that we will make. As explained earlier, the method that we use to create a predictive model is SVM. Model is trained with the following parameters:
+* Kernel: RBF
+* Cost: 1
+* Gamma: 0.03
 
-bla bla bla...
+Cost with value 1 and Gamma with value 0.03 is set by the same configuration as default svm function in R which has cost parameter with default value of 1 and Gamma with default value 1/(data dimension). 
 
+We do train by random sampling with a training set size 80% from training data that we have. 
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/classification-accuracy-orange.png">
+</p>
+
+The resulting classification accuracy is 0.51, which means that the resulting predictive model still makes a lot of mistakes in making predictions. After seeing the accuracy, we make a predictive model. We do random sampling from training data (example 80% of training data) then train SVM model. After that, input the data that will be predicted into the model. In Orange, we have to enter data that will be predicted one by one. For example, we entered data on 01-01-2016 as data to be predicted. The model will generate predictions for each row of data. Then the results can be saved into a new file in CSV format. The Orange workflow can be seen below:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/predict-ows.png">
+</p>
 
 ### Making Predictions with Python
 
-Because of Orange's limitations, we switch from it and use Python. We write a python script to create the predictive model and also making predictions. Python libraries that we use are as follows:
+Because of Orange's limitations, we switch from it and use Python instead. We write a python script to create the predictive model and also making predictions. Python libraries that we use are as follows:
 * OS: for operating system functionality. We use it to read a list of files from a directory.
 * Pandas: for data manipulation and analysis.
 * Sklearn: for machine learning. We use it to make model and making predictions.
 * Numpy: for scientific computing.
 * Pickle: for saving and loading the resulting prediction model.
 
-As explained earlier, the method that we use to create a predictive model is SVM. Model are trained with the following parameters:
+The method that we use to create a predictive model is SVM. Model are trained with the following parameters:
 * Kernel: RBF
 * Cost: 1
 * Gamma: 0.03
-
-Cost with value 1 and Gamma with value 0.03 is set by the same configuration as default svm function in R which has cost parameter with default value of 1 and Gamma with default value 1/(data dimension)
 
 We make 3 types of prediction models, model that trained using 60% of training data, 70% of training data, and 80% of training data. We also calculate and compare the accuracy of each model by using the rest of the training data as testing data. The accuracy results are as follows:
 * Trained using 80% of training data and tested using 20% of training data: 0.7529093402259517
@@ -442,6 +453,7 @@ We predict the existence of tuna from 1 January 2012 until 31 December 2016 by u
 * [Plotly](https://plot.ly/) - Plotly graph
 * [Mapbox](https://www.mapbox.com/) - Mapbox Map API
 * [Scikit-learn](https://scikit-learn.org) - Scikit-learn
+* [Orange](https://orange.biolab.si/) - Orange
 
 ## Authors
 
