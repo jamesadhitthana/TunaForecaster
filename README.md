@@ -394,11 +394,13 @@ The resulting classification accuracy is 0.51, which means that the resulting pr
 ### Making Predictions with Python
 
 Because of Orange's limitations, we switch from it and use Python instead. We write a python script to create the predictive model and also making predictions. Python libraries that we use are as follows:
-* OS: for operating system functionality. We use it to read a list of files from a directory.
-* Pandas: for data manipulation and analysis.
-* Sklearn: for machine learning. We use it to make model and making predictions.
-* Numpy: for scientific computing.
-* Pickle: for saving and loading the resulting prediction model.
+* os: for operating system functionality. We use it to read a list of files from a directory.
+* pandas: for data manipulation and analysis.
+* sklearn.model_selection.train_test_split: for sampling data.
+* sklearn.svm: for making prediction model using SVM method.
+* sklearn.metrics.accuracy_score: for testing the model and checking the accuracy.
+* numpy: for scientific computing.
+* pickle: for saving and loading the resulting prediction model.
 
 The method that we use to create a predictive model is SVM. Model are trained with the following parameters:
 * Kernel: RBF
