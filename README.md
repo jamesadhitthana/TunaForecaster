@@ -186,6 +186,112 @@ The code above shows how all of the lists that contains the stored coordinate da
 ```
 THe snippet aboves shows how a dataframe is saved into a csv file according to the source file's original filename into the target folder.
 
+## Prediction and SVM
+
+### Support Vector Machine (SVM)
+
+SVM is one of the methods used in machine learning. SVM use hyperplane to classify data and separate them into different classes. In this project we use SVM to classify whether that coordinate has tuna or not. In SVM there are kernel that is used when data not linearly separable so we project from 2D to 3D so we can separate them. In this project we use RBF kernel because each coordinate is being plot close to each other so we want to be able to separate which coordinate has tuna or not accurately.
+
+### Normalize the Training Data
+
+To make the prediction model, the first thing to do is preparing the training data. We can check the training data by looking at the distribution, we made the box plot and the distribution plot using Orange software.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/training-data-box-plot.png">
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/training-data-distribution.png">
+</p>
+
+As we can see, the distribution of training data is not normal. This happened because there are several data with a very high value of chlorophyll (up to 3), while the average/mean is about 0.594445 and the median is 0.122574. To normalize the data, we select rows from data whose chlorophyll values are below 0.4 and then the selected data is stored in a new file in CSV format.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/select-rows-training-data.png">
+</p>
+
+The selected data is 412034 rows from 578453 rows that will be used as training data. The Orange workflow can be seen below:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/normalize-training-data-ows.png">
+</p>
+
+### Making Predictions with Orange
+
+From existing data, we can make a prediction model for predicting the existence of tuna. We can use Orange software to make the predictive model. First, we do a test and score to see the accuracy of the predictive model that we will make. As explained earlier, the method that we use to create a predictive model is SVM. Model is trained with the following parameters:
+* Kernel: RBF
+* Cost: 1
+* Gamma: 0.03
+
+Cost with value 1 and Gamma with value 0.03 is set by the same configuration as default svm function in R which has cost parameter with default value of 1 and Gamma with default value 1/(data dimension). 
+
+We do train by random sampling with a training set size 80% from training data that we have. 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/classification-accuracy-orange.png">
+</p>
+
+The resulting classification accuracy is 0.51, which means that the resulting predictive model still makes a lot of mistakes in making predictions. After seeing the accuracy, we make a predictive model. We do random sampling from training data (example 80% of training data) then train SVM model. After that, input the data that will be predicted into the model. In Orange, we have to enter data that will be predicted one by one. For example, we entered data on 01-01-2016 as data to be predicted. The model will generate predictions for each row of data. Then the results can be saved into a new file in CSV format. The Orange workflow can be seen below:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/predict-ows.png">
+</p>
+
+### Making Predictions with Python
+
+Because of Orange's limitations, we switch from it and use Python instead. We write a python script to create the predictive model and also making predictions. Python libraries that we use are as follows:
+* os: for operating system functionality. We use it to read a list of files from a directory.
+* pandas: for data manipulation and analysis.
+* sklearn.model_selection.train_test_split: for sampling data.
+* sklearn.svm: for making prediction model using SVM method.
+* sklearn.metrics.accuracy_score: for testing the model and checking the accuracy.
+* numpy: for scientific computing.
+* pickle: for saving and loading the resulting prediction model.
+
+The method that we use to create a predictive model is SVM. Model are trained with the following parameters:
+* Kernel: RBF
+* Cost: 1
+* Gamma: 0.03
+
+We make 3 types of prediction models, model that trained using 60% of training data, 70% of training data, and 80% of training data. We also calculate and compare the accuracy of each model by using the rest of the training data as testing data. The accuracy results are as follows:
+* Trained using 80% of training data and tested using 20% of training data: 0.7529093402259517
+* Trained using 70% of training data and tested using 30% of training data: 0.7527728114811788
+* Trained using 60% of training data and tested using 40% of training data: 0.7538558617593165
+
+The python script to make prediction model can be seen below:
+```python
+from sklearn import svm
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+# split the training data, for example: 40% of training data for training and 60% of training data for testing
+x_train, x_test, y_train, y_test = train_test_split(x_training, y_training, test_size = 0.40)
+
+# create a new SVM model
+svmModel = svm.SVC(kernel='rbf', C=1 ,gamma=0.03, verbose=1)
+
+# train the SVM model
+svmModel.fit(x_train, y_train)
+
+# test the accuracy of the model
+y_svm = svmModel.predict(x_test)
+print("Accuracy score: ", accuracy_score(y_test, y_svm))
+```
+
+The model saved into SAV file format and then we can load it to make a prediction:
+```python
+import pickle
+
+# save the model as a finalized_model_60.sav for example
+filename = 'finalized_model_60.sav'
+pickle.dump(svmModel, open(filename, 'wb'))
+
+# load the model
+svmModel = pickle.load(open("finalized_model_60.sav", 'rb'))
+```
+
+We predict the existence of tuna from 1 January 2012 until 31 December 2016 by using the data that has been cleaned before. The existence of tuna is indicated by tuna value=1, and if there is no tuna then tuna value=0. The results of the predictions are saved into the CSV file and placed into a folder. The predicted data now can be visualized by python dash.
+
 ## Dash Dashboard with Bootstrap
 
 Dash is a framework that allows us to build beautiful, web-based analytics applications. Through dash and its dash-core-components, we are able to create interactive elements that build up our interactive dashboard. In addition to that, this project also implements the bootstrap framework through the dash-bootstrap-components additional module in order to assist with the front-end development of the layout and design of the dashboard.
@@ -339,112 +445,6 @@ Now that all of the essential functionality of the app is created, this snippet 
 if __name__ == "__main__":
     app.run_server(debug=True)
 ```
-
-## Prediction and SVM
-
-### Support Vector Machine (SVM)
-
-SVM is one of the methods used in machine learning. SVM use hyperplane to classify data and separate them into different classes. In this project we use SVM to classify whether that coordinate has tuna or not. In SVM there are kernel that is used when data not linearly separable so we project from 2D to 3D so we can separate them. In this project we use RBF kernel because each coordinate is being plot close to each other so we want to be able to separate which coordinate has tuna or not accurately.
-
-### Normalize the Training Data
-
-To make the prediction model, the first thing to do is preparing the training data. We can check the training data by looking at the distribution, we made the box plot and the distribution plot using Orange software.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/training-data-box-plot.png">
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/training-data-distribution.png">
-</p>
-
-As we can see, the distribution of training data is not normal. This happened because there are several data with a very high value of chlorophyll (up to 3), while the average/mean is about 0.594445 and the median is 0.122574. To normalize the data, we select rows from data whose chlorophyll values are below 0.4 and then the selected data is stored in a new file in CSV format.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/select-rows-training-data.png">
-</p>
-
-The selected data is 412034 rows from 578453 rows that will be used as training data. The Orange workflow can be seen below:
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/normalize-training-data-ows.png">
-</p>
-
-### Making Predictions with Orange
-
-From existing data, we can make a prediction model for predicting the existence of tuna. We can use Orange software to make the predictive model. First, we do a test and score to see the accuracy of the predictive model that we will make. As explained earlier, the method that we use to create a predictive model is SVM. Model is trained with the following parameters:
-* Kernel: RBF
-* Cost: 1
-* Gamma: 0.03
-
-Cost with value 1 and Gamma with value 0.03 is set by the same configuration as default svm function in R which has cost parameter with default value of 1 and Gamma with default value 1/(data dimension). 
-
-We do train by random sampling with a training set size 80% from training data that we have. 
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/classification-accuracy-orange.png">
-</p>
-
-The resulting classification accuracy is 0.51, which means that the resulting predictive model still makes a lot of mistakes in making predictions. After seeing the accuracy, we make a predictive model. We do random sampling from training data (example 80% of training data) then train SVM model. After that, input the data that will be predicted into the model. In Orange, we have to enter data that will be predicted one by one. For example, we entered data on 01-01-2016 as data to be predicted. The model will generate predictions for each row of data. Then the results can be saved into a new file in CSV format. The Orange workflow can be seen below:
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/predict-ows.png">
-</p>
-
-### Making Predictions with Python
-
-Because of Orange's limitations, we switch from it and use Python instead. We write a python script to create the predictive model and also making predictions. Python libraries that we use are as follows:
-* os: for operating system functionality. We use it to read a list of files from a directory.
-* pandas: for data manipulation and analysis.
-* sklearn.model_selection.train_test_split: for sampling data.
-* sklearn.svm: for making prediction model using SVM method.
-* sklearn.metrics.accuracy_score: for testing the model and checking the accuracy.
-* numpy: for scientific computing.
-* pickle: for saving and loading the resulting prediction model.
-
-The method that we use to create a predictive model is SVM. Model are trained with the following parameters:
-* Kernel: RBF
-* Cost: 1
-* Gamma: 0.03
-
-We make 3 types of prediction models, model that trained using 60% of training data, 70% of training data, and 80% of training data. We also calculate and compare the accuracy of each model by using the rest of the training data as testing data. The accuracy results are as follows:
-* Trained using 80% of training data and tested using 20% of training data: 0.7529093402259517
-* Trained using 70% of training data and tested using 30% of training data: 0.7527728114811788
-* Trained using 60% of training data and tested using 40% of training data: 0.7538558617593165
-
-The python script to make prediction model can be seen below:
-```python
-from sklearn import svm
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-
-# split the training data, for example: 40% of training data for training and 60% of training data for testing
-x_train, x_test, y_train, y_test = train_test_split(x_training, y_training, test_size = 0.40)
-
-# create a new SVM model
-svmModel = svm.SVC(kernel='rbf', C=1 ,gamma=0.03, verbose=1)
-
-# train the SVM model
-svmModel.fit(x_train, y_train)
-
-# test the accuracy of the model
-y_svm = svmModel.predict(x_test)
-print("Accuracy score: ", accuracy_score(y_test, y_svm))
-```
-
-The model saved into SAV file format and then we can load it to make a prediction:
-```python
-import pickle
-
-# save the model as a finalized_model_60.sav for example
-filename = 'finalized_model_60.sav'
-pickle.dump(svmModel, open(filename, 'wb'))
-
-# load the model
-svmModel = pickle.load(open("finalized_model_60.sav", 'rb'))
-```
-
-We predict the existence of tuna from 1 January 2012 until 31 December 2016 by using the data that has been cleaned before. The existence of tuna is indicated by tuna value=1, and if there is no tuna then tuna value=0. The results of the predictions are saved into the CSV file and placed into a folder. The predicted data now can be visualized by python dash.
 
 
 ## Built With
