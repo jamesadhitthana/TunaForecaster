@@ -346,6 +346,27 @@ if __name__ == "__main__":
 
 SVM is one of the methods used in machine learning. SVM use hyperplane to classify data and separate them into different classes. In this project we use SVM to classify whether that coordinate has tuna or not. In SVM there are kernel that is used when data not linearly separable so we project from 2D to 3D so we can separate them. In this project we use RBF kernel because each coordinate is being plot close to each other so we want to be able to separate which coordinate has tuna or not accurately.
 
+### Normalize the Training Data
+
+To make the prediction model, the first thing to do is preparing the training data. We can check the training data by looking at the distribution, we made the distribution plot and the box plot using Orange software.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part1.png">
+</p>
+
+As we can see, the distribution of training data is not normal. This happened because there are several data with a very high value of chlorophyll (up to 3), while the average/mean is about 0.594445 and the median is 0.122574. To normalize the data, we select rows from data whose chlorophyll values are below 0.4 and then the selected data is stored in a new file in CSV format.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part1.png">
+</p>
+
+The selected data is 412034 rows from 578453 rows that will be used as training data. The Orange workflow can be seen below:
+
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part1.png">
+</p>
+
 ### Making Predictions
 
 From existing data, we can make a prediction model for predicting the existence of tuna. We write a python script to create the predictive model and also making predictions. Python libraries that we use are as follows:
