@@ -237,6 +237,8 @@ The resulting classification accuracy is 0.51, which means that the resulting pr
   <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/predict-ows.png">
 </p>
 
+From the experiments we did on Orange, we saw that the predictive model we made in Orange has a small accuracy score. Besides that in Orange, we can't do file iteration, while our data consists of many files.
+
 ### Making Predictions with Python
 
 Because of Orange's limitations, we switch from it and use Python instead. We write a python script to create the predictive model and also making predictions. Python libraries that we use are as follows:
@@ -261,8 +263,8 @@ We make 3 types of prediction models, model that trained using 60% of training d
 The python script to make prediction model can be seen below:
 ```python
 from sklearn import svm
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.model_selection.train_test_split
+from sklearn.metrics.accuracy_score
 
 # split the training data, for example: 40% of training data for training and 60% of training data for testing
 x_train, x_test, y_train, y_test = train_test_split(x_training, y_training, test_size = 0.40)
