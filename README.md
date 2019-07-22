@@ -351,20 +351,25 @@ SVM is one of the methods used in machine learning. SVM use hyperplane to classi
 To make the prediction model, the first thing to do is preparing the training data. We can check the training data by looking at the distribution, we made the distribution plot and the box plot using Orange software.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part1.png">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/training-data-distribution.png">
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/training-data-box-plot.png">
 </p>
 
 As we can see, the distribution of training data is not normal. This happened because there are several data with a very high value of chlorophyll (up to 3), while the average/mean is about 0.594445 and the median is 0.122574. To normalize the data, we select rows from data whose chlorophyll values are below 0.4 and then the selected data is stored in a new file in CSV format.
 
+
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part1.png">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/select-rows-training-data.png">
 </p>
 
 The selected data is 412034 rows from 578453 rows that will be used as training data. The Orange workflow can be seen below:
 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/tuna-flowchart-clean-part1.png">
+  <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/normalize-training-data-ows.png">
 </p>
 
 ### Making Predictions
