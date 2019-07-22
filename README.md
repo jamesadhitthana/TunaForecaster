@@ -218,7 +218,7 @@ The selected data is 412034 rows from 578453 rows that will be used as training 
 
 ### Making Predictions with Orange
 
-From existing data, we can make a prediction model for predicting the existence of tuna. We can use Orange software to make the predictive model. First, we do a test and score to see the accuracy of the predictive model that we will make. As explained earlier, the method that we use to create a predictive model is SVM. Model is trained with the following parameters:
+From existing data, we can make a prediction model for predicting the existence of tuna. We can use Orange software to make the predictive model. First, we do a test and score to see the accuracy of the predictive model that we will make. As explained earlier, the method that we use to create a predictive model is SVM. Orange use (Nu-SVC)[https://docs.biolab.si/2/reference/rst/Orange.classification.svm.html] type for its SVM model.  Model is trained with the following parameters:
 * Kernel: RBF
 * Cost: 1
 * Gamma: 0.03
@@ -250,7 +250,7 @@ Because of Orange's limitations, we switch from it and use Python instead. We wr
 * numpy: for scientific computing.
 * pickle: for saving and loading the resulting prediction model.
 
-The method that we use to create a predictive model is SVM. Model are trained with the following parameters:
+The method that we use to create a predictive model is SVM. We use sklearn package to make a predictive model. Sklearn use (C-SVC)[https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html] type for its SVM model. Model are trained with the following parameters:
 * Kernel: RBF
 * Cost: 1
 * Gamma: 0.03
