@@ -469,7 +469,7 @@ if __name__ == "__main__":
 * [Plotly](https://plot.ly/) - Plotly graph
 * [Mapbox](https://www.mapbox.com/) - Mapbox Map API
 * [Scikit-learn](https://scikit-learn.org) - Scikit-learn
-* [Orange](https://orange.biolab.si/) - Orange
+* [Orange](https://orange.biolab.si/) - Orange Data Mining Toolbox
 
 ## Authors
 
@@ -489,5 +489,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## References
 * [All India Survey on Higher Education. Guidelines for Filling Geographical Referencing Details. PDF. India: Government of India.](http://aishe.nic.in/aishe/viewDocument.action?documentId=154)
+* [Scikit-learn: Machine Learning in Python, Pedregosa et al., JMLR 12, pp. 2825-2830, 2011.](http://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html)
+* [Demsar J, Curk T, Erjavec A, Gorup C, Hocevar T, Milutinovic M, Mozina M, Polajnar M, Toplak M, Staric A, Stajdohar M, Umek L, Zagar L, Zbontar J, Zitnik M, Zupan B (2013) Orange: Data Mining Toolbox in Python, Journal of Machine Learning Research 14(Aug): 2349−2353.](http://jmlr.org/papers/v14/demsar13a.html)
+* [Stéfan van der Walt, S. Chris Colbert and Gaël Varoquaux. The NumPy Array: A Structure for Efficient Numerical Computation, Computing in Science & Engineering, 13, 22-30 (2011), DOI:10.1109/MCSE.2011.37](https://aip.scitation.org/doi/abs/10.1109/MCSE.2011.37)
+
 
 
