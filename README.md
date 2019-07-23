@@ -192,6 +192,13 @@ THe snippet aboves shows how a dataframe is saved into a csv file according to t
 
 SVM is one of the methods used in machine learning. SVM use hyperplane to classify data and separate them into different classes. In this project we use SVM to classify whether that coordinate has tuna or not. In SVM there are kernel that is used when data not linearly separable so we project from 2D to 3D so we can separate them. In this project we use RBF kernel because each coordinate is being plot close to each other so we want to be able to separate which coordinate has tuna or not accurately.
 
+### Our SVM Model
+Because we want to predict tuna location using sea surface temperature and chlorophyll concentration, our SVM model become like this :
+```
+  (tuna ~ sst + chlorophyll, data = train, kernel = "radial")
+```
+We want to predict tuna location based on sst and chlorophyll using data training with variable train and with radial kernel or RBF.
+
 ### Normalize the Training Data
 
 To make the prediction model, the first thing to do is preparing the training data. We can check the training data by looking at the distribution, we made the box plot and the distribution plot using Orange software.
