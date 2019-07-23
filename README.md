@@ -263,11 +263,7 @@ The method that we use to create a predictive model is SVM. We use sklearn packa
 * Gamma: 0.03
 
 We make 3 types of prediction models, model that trained using 60% of training data, 70% of training data, and 80% of training data. We also calculate and compare the accuracy of each model by using the rest of the training data as testing data. The accuracy results are as follows:
-* Trained using 80% of training data and tested using 20% of training data: 0.7529093402259517
-* Trained using 70% of training data and tested using 30% of training data: 0.7527728114811788
-* Trained using 60% of training data and tested using 40% of training data: 0.7538558617593165
-
-| | Accuracy | |
+| Accuracy |
 |:---:|:---:|:---:|
 | 60% Training Data | 70% Training Data | 80% Training Data |
 | 0.7538558617593165 | 0.7527728114811788 | 0.7529093402259517 |
