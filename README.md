@@ -249,13 +249,13 @@ From the experiments we did on Orange, we saw that the predictive model we made 
 ### Making Predictions with Python
 
 Because of Orange's limitations, we switch from it and use Python instead. We write a python script to create the predictive model and also making predictions. Python libraries that we use are as follows:
-* os: for operating system functionality. We use it to read a list of files from a directory.
-* pandas: for data manipulation and analysis.
-* sklearn.model_selection.train_test_split: for sampling data.
-* sklearn.svm: for making prediction model using SVM method.
-* sklearn.metrics.accuracy_score: for testing the model and checking the accuracy.
-* numpy: for scientific computing.
-* pickle: for saving and loading the resulting prediction model.
+* [os](https://docs.python.org/3/library/os.html): for operating system functionality. We use it to read a list of files from a directory.
+* [pandas](https://pandas.pydata.org/pandas-docs/stable/): for data manipulation and analysis.
+* [sklearn.model_selection.train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html): for sampling data.
+* [sklearn.svm.SVC](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html): for making prediction model using SVM method.
+* [sklearn.metrics.accuracy_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html): for testing the model and checking the accuracy.
+* [numpy](https://docs.scipy.org/doc/): for scientific computing.
+* [pickle](https://docs.python.org/3/library/pickle.html): for saving and loading the resulting prediction model.
 
 The method that we use to create a predictive model is SVM. We use sklearn package to make a predictive model. Sklearn use [C-SVC](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) type for its SVM model. Model are trained with the following parameters:
 * Kernel: RBF
@@ -469,8 +469,10 @@ if __name__ == "__main__":
 * [Cosmo](https://bootswatch.com/cosmo/) - Bootstrap theme
 * [Plotly](https://plot.ly/) - Plotly graph
 * [Mapbox](https://www.mapbox.com/) - Mapbox Map API
-* [Scikit-learn](https://scikit-learn.org) - Scikit-learn
 * [Orange](https://orange.biolab.si/) - Orange Data Mining Toolbox
+* [Scikit-learn](https://scikit-learn.org) - Scikit-learn
+* [Pandas](https://pandas.pydata.org/) - Pandas
+* [Numpy](https://numpy.org/) - Numpy
 
 ## Authors
 
@@ -493,6 +495,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 * [Scikit-learn: Machine Learning in Python, Pedregosa et al., JMLR 12, pp. 2825-2830, 2011.](http://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html)
 * [Demsar J, Curk T, Erjavec A, Gorup C, Hocevar T, Milutinovic M, Mozina M, Polajnar M, Toplak M, Staric A, Stajdohar M, Umek L, Zagar L, Zbontar J, Zitnik M, Zupan B (2013) Orange: Data Mining Toolbox in Python, Journal of Machine Learning Research 14(Aug): 2349−2353.](http://jmlr.org/papers/v14/demsar13a.html)
 * [Stéfan van der Walt, S. Chris Colbert and Gaël Varoquaux. The NumPy Array: A Structure for Efficient Numerical Computation, Computing in Science & Engineering, 13, 22-30 (2011), DOI:10.1109/MCSE.2011.37](https://aip.scitation.org/doi/abs/10.1109/MCSE.2011.37)
+* [Chih-Chung Chang and Chih-Jen Lin, LIBSVM : a library for support vector machines. ACM Transactions on Intelligent Systems and Technology, 2:27:1--27:27, 2011. Software available at http://www.csie.ntu.edu.tw/~cjlin/libsvm](http://www.csie.ntu.edu.tw/~cjlin/libsvm)
+* [Wes McKinney. Data Structures for Statistical Computing in Python, Proceedings of the 9th Python in Science Conference, 51-56 (2010)](http://conference.scipy.org/proceedings/scipy2010/mckinney.html)
 
 
 
