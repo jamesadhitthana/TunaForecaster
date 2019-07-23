@@ -267,6 +267,11 @@ We make 3 types of prediction models, model that trained using 60% of training d
 * Trained using 70% of training data and tested using 30% of training data: 0.7527728114811788
 * Trained using 60% of training data and tested using 40% of training data: 0.7538558617593165
 
+| | Accuracy | |
+|:---:|:---:|:---:|
+| 60% Training Data | 70% Training Data | 80% Training Data |
+| 0.7538558617593165 | 0.7527728114811788 | 0.7529093402259517 |
+
 The python script to make prediction model can be seen below:
 ```python
 from sklearn import svm
