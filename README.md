@@ -1,11 +1,3 @@
-#TODO LIST:
-    - regression 
-    - SVM tambahin formula nya
-    - jelasin SVM lebih dalam
-    - fix references
-    - ganti jadi tabel
-
-
 <h1 align="center">
     Tuna Prediction
 </h1>
@@ -18,7 +10,7 @@
 
 ## Introduction
 
-The initial goal of our program is to predict tuna location based on fishing vessel data and its correlation with sea surface temperature (SST) and chlorophyll concentration. We also want to see the comparison of different prediction model performance.
+The initial goal of our program is to predict tuna location based on fishing vessel data and its correlation with sea surface temperature (SST) and chlorophyll concentration. We also want to see the comparison of different prediction model performance. Why we predict tuna location using fishing vessel data? because every fishing vessel in this data has fishing gear capable to fish tuna, so we assume they fish tuna. Why sea surface temperature and chlorophyll concentration become predictor for predicting tuna location? because tuna lives in certain sea surface temperature and tuna eat small fish and invertebrates that eat plankton in certain chlorophyll concentration.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/jamesadhitthana/TunaForecaster/master/Screenshots/Flowchart.png">
